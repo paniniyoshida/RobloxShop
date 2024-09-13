@@ -1,0 +1,7 @@
+{
+
+  "ConnectionStrings": {
+    "MSSQL": "Data Source=DESKTOP-L6HQMC0\SQLEXPRESS;Initial Catalog=RobloxShop;Integrated Security=True;Connect Timeout=30;"
+  }
+  
+}

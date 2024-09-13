@@ -22,8 +22,5 @@ namespace RobloxShop.Entities
         public int? PromocodeID { get; set; }
 
         public Promocode? Promocode { get; set; }
-
-       
-
     }
 }

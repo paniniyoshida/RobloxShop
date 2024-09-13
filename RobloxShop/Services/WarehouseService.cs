@@ -1,5 +1,6 @@
 ﻿using RobloxShop.Entities;
 using RobloxShop.Repository.Interfaces;
+using RobloxShop.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RobloxShop.Services
 {
-    public class WarehouseService : IWarehouseRepository
+    public class WarehouseService : IWarehouseService
     {
         private readonly IWarehouseRepository _warehouseRepository;
 
