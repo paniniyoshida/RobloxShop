@@ -27,7 +27,7 @@ namespace RobloxShop.Utils
 
             JObject jObject = JObject.Parse(jsonConfig);
 
-            string connectionString = jObject["ConnectionStrings"]["MSSQL"].Value<string>();
+            string connectionString = jObject["ConnectionStrings"]["POSTGRE"].Value<string>();
 
             ShopContext.ConnectionString = connectionString;
 

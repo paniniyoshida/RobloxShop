@@ -6,7 +6,19 @@
         xmlns:local="clr-namespace:RobloxShop"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Frame x:Name="page_frame" NavigationUIVisibility="Hidden" Grid.Row="1"></Frame>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="posts_table_but" Grid.Column="0" Content="Previous" Click="previous_button_Click"></Button>
+            <Button x:Name="employeers_table_but" Grid.Column="1" Content="Next" Click="next_button_Click"></Button>
+        </Grid>
     </Grid>
 </Window>

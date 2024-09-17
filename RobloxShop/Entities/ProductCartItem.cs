@@ -17,7 +17,7 @@ namespace RobloxShop.Entities
 
         public int Amount { get; set; }
 
-        public int ProductCartID { get; set; }
+        public int ProductCartId { get; set; }
 
         public ProductCart ProductCart { get; set; }
 

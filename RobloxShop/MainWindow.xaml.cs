@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using RobloxShop.Forms.Pages;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +20,17 @@ namespace RobloxShop
         public MainWindow()
         {
             InitializeComponent();
+            page_frame.Content = new TagPage();
+        }
+
+        private void previous_button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void next_button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -13,6 +13,10 @@ namespace RobloxShop.Services
     {
 
         private readonly ITagRepository _tagRepository;
+        public TagService(ITagRepository tagRepository)
+        {
+           _tagRepository = tagRepository;
+        }
 
         public Tag Add(Tag entity)
         {
