@@ -52,8 +52,11 @@ namespace RobloxShop.Forms.Pages
         private void delete_button_Click(object sender, RoutedEventArgs e)
         {
             var viewdata = table_grid.SelectedItem as TagViewData;
-            _tagService.Delete(viewdata.Id);
-            Reload();
+            if (viewdata != null)
+            {
+                _tagService.Delete(viewdata.Id);
+            }
+                Reload();
         }
 
         private class TagViewData
