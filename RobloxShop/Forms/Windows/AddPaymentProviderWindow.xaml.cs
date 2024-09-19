@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace RobloxShop.Forms.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для AddPaymentWindow.xaml
+    /// Логика взаимодействия для AddPaymentProviderWindow.xaml
     /// </summary>
-    public partial class AddPaymentWindow : Window
+    public partial class AddPaymentProviderWindow : Window
     {
-        public AddPaymentWindow()
+        public AddPaymentProviderWindow()
         {
             InitializeComponent();
         }

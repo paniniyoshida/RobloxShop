@@ -5,13 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RobloxShop.Forms.Windows"
         mc:Ignorable="d"
-            Title="AddCheckPositionsWindow" Height="205" Width="242">
-    <Grid Margin="0,0,21,26">
-        <Label Content="Цена:" HorizontalAlignment="Left" Margin="48,27,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name ="productNameTextBox" HorizontalAlignment="Left" Margin="94,31,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Количество:" HorizontalAlignment="Left" Margin="12,53,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name ="productPriceTextBox" HorizontalAlignment="Left" Margin="94,57,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        
-        <Button Content="Добавить" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="21" Width="185" Click="Button_Click" Margin="26,121,0,0"/>
+            Title="AddCheckPositionsWindow" Height="147" Width="272">
+    <Grid Margin="0,0,10,9">
+        <Label Content="Цена:" HorizontalAlignment="Left" Margin="101,1,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name ="productNameTextBox" HorizontalAlignment="Left" Margin="142,5,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Количество товаров:" HorizontalAlignment="Left" Margin="16,21,0,0" VerticalAlignment="Top" Height="30" Width="126"/>
+        <TextBox x:Name ="productPriceTextBox" HorizontalAlignment="Left" Margin="142,28,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+
+        <Button Content="Добавить" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="21" Width="246" Click="Button_Click" Margin="16,97,0,0" RenderTransformOrigin="0.493,2.942"/>
+        <Label Content="Продукт" HorizontalAlignment="Left" Margin="86,46,0,0" VerticalAlignment="Top"/>
+        <Label Content="ID чека" HorizontalAlignment="Left" Margin="92,67,0,0" VerticalAlignment="Top"/>
+        <ComboBox HorizontalAlignment="Left" Margin="142,51,0,0" VerticalAlignment="Top" Width="120" Height="16"/>
+        <ComboBox HorizontalAlignment="Left" Margin="142,72,0,0" VerticalAlignment="Top" Width="120" Height="16"/>
     </Grid>
 </Window>

@@ -15,16 +15,16 @@ using System.Windows.Shapes;
 namespace RobloxShop.Forms.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для AddPaymentWindow.xaml
+    /// Логика взаимодействия для AddProductCartItemWindow.xaml
     /// </summary>
-    public partial class AddPaymentWindow : Window
+    public partial class AddProductCartItemWindow : Window
     {
-        public AddPaymentWindow()
+        public AddProductCartItemWindow()
         {
             InitializeComponent();
         }
 
-        private void addCheckButton_Click(object sender, RoutedEventArgs e)
+        private void addProductCartButton_Click(object sender, RoutedEventArgs e)
         {
 
         }

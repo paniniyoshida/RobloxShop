@@ -10,21 +10,32 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace RobloxShop.Forms.Windows
+namespace RobloxShop.Forms.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для AddPaymentWindow.xaml
+    /// Логика взаимодействия для UserPage.xaml
     /// </summary>
-    public partial class AddPaymentWindow : Window
+    public partial class UserPage : Page
     {
-        public AddPaymentWindow()
+        public UserPage()
         {
             InitializeComponent();
         }
 
-        private void addCheckButton_Click(object sender, RoutedEventArgs e)
+        private void add_button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void delete_button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void update_button_Click(object sender, RoutedEventArgs e)
         {
 
         }

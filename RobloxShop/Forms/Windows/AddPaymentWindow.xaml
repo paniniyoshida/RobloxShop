@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RobloxShop.Forms.Windows"
         mc:Ignorable="d"
-        Title="AddPaymentWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="AddPaymentWindow" Height="119" Width="255">
+    <Grid Margin="0,0,10,12">
+        <Label Content="Провайдер" HorizontalAlignment="Left" Margin="29,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.173,-2.234"/>
+        <Label Content="ID чека" HorizontalAlignment="Left" Margin="51,29,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="addPaymentButton" Content="Добавить" HorizontalAlignment="Left" Margin="29,60,0,0" VerticalAlignment="Top" Width="197" Height="22" Click="addCheckButton_Click"/>
+        <ComboBox HorizontalAlignment="Left" Margin="106,15,0,0" VerticalAlignment="Top" Width="120" Height="15"/>
+        <ComboBox HorizontalAlignment="Left" Margin="106,34,0,0" VerticalAlignment="Top" Width="120" Height="15"/>
+
     </Grid>
 </Window>
