@@ -1,4 +1,7 @@
-﻿using System;
+﻿using RobloxShop.Entities;
+using RobloxShop.Services.Interfaces;
+using RobloxShop.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,14 +22,25 @@ namespace RobloxShop.Forms.Windows
     /// </summary>
     public partial class AddCategoryWindow : Window
     {
+        private readonly ICategoryService _categoryService;
+
         public AddCategoryWindow()
         {
             InitializeComponent();
+            _categoryService = DependencyResolver.GetService<ICategoryService>();
         }
+
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            Category category = new Category()
+            {
+                Name = tagNameTextBox.Text
 
+            };
+            _categoryService.Add(category);
+            Close();
         }
     }
 }

@@ -1,4 +1,8 @@
-﻿using System;
+﻿using RobloxShop.Entities;
+using RobloxShop.Repository.Interfaces;
+using RobloxShop.Services.Interfaces;
+using RobloxShop.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,14 +23,27 @@ namespace RobloxShop.Forms.Windows
     /// </summary>
     public partial class AddPaymentProviderWindow : Window
     {
+
+        private readonly IPaymentProviderService _paymentProviderService;
+
         public AddPaymentProviderWindow()
         {
             InitializeComponent();
+
+            _paymentProviderService = DependencyResolver.GetService<IPaymentProviderService>();
         }
 
         private void addCheckButton_Click(object sender, RoutedEventArgs e)
         {
+            PaymentProvider paymentProvider = new PaymentProvider()
+            {
+                Name = addProviderName.Text,
+                CreationDate = DateTime.UtcNow,
+            };
 
+            _paymentProviderService.Add(paymentProvider);
+
+            Close();
         }
     }
 }

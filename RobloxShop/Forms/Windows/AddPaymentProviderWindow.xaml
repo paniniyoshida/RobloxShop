@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RobloxShop.Forms.Windows"
         mc:Ignorable="d"
-        Title="AddPaymentProviderWindow" Height="136" Width="283">
+        Title="AddPaymentProviderWindow" Height="88" Width="283">
     <Grid Margin="0,0,10,9">
-        <Label Content="Название провайдера:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Label Content="Дата создания" HorizontalAlignment="Left" Margin="56,36,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="150,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Height="15"  RenderTransformOrigin="0.367,-0.198"/>
-        <DatePicker HorizontalAlignment="Left" Margin="150,37,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="addPaymentProviderButton" Content="Добавить" HorizontalAlignment="Left" Margin="13,78,0,0" VerticalAlignment="Top" Width="257" Height="22" Click="addCheckButton_Click"/>
+        <Label  Content="Название провайдера:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+
+        <TextBox x:Name="addProviderName" HorizontalAlignment="Left" Margin="150,15,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Height="15"  RenderTransformOrigin="0.367,-0.198"/>
+
+        <Button x:Name="addPaymentProviderButton" Content="Добавить" HorizontalAlignment="Left" Margin="13,41,0,0" VerticalAlignment="Top" Width="257" Height="18" Click="addCheckButton_Click"/>
 
     </Grid>
 </Window>
