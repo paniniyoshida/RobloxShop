@@ -13,7 +13,10 @@ namespace RobloxShop.Services
     {
 
         private readonly IProductCartItemRepository _productCartItemRepository;
-
+        public ProductCartItemService(IProductCartItemRepository productCartItemRepository)
+        {
+            _productCartItemRepository = productCartItemRepository;
+        }
         public ProductCartItem Add(ProductCartItem entity)
         {
             return _productCartItemRepository.Add(entity);

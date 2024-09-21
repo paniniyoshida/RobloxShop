@@ -1,4 +1,5 @@
 ﻿using RobloxShop.Forms.Windows;
+using RobloxShop.Forms.Windows.Update;
 using RobloxShop.Services.Interfaces;
 using RobloxShop.Utils;
 using System;
@@ -68,12 +69,11 @@ namespace RobloxShop.Forms.Pages
         private void update_button_Click(object sender, RoutedEventArgs e)
         {
             var viewdata = table_grid.SelectedItem as TagViewData;
-            Entities.Tag tag = new Entities.Tag()
-            {
-                Id = viewdata.Id,
-                Name = viewdata.Name,
-            };
-            _tagService.Update(tag);
+
+            //UpdateTagWindow tagWindow = new UpdateTagWindow(viewdata.Id);
+
+           // tagWindow.ShowDialog();
+
             Reload();
         }
     }

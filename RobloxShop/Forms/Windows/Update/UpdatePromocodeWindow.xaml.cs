@@ -1,5 +1,4 @@
 ﻿using RobloxShop.Entities;
-using RobloxShop.Services;
 using RobloxShop.Services.Interfaces;
 using RobloxShop.Utils;
 using System;
@@ -16,32 +15,42 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace RobloxShop.Forms.Windows
+namespace RobloxShop.Forms.Windows.Update
 {
     /// <summary>
-    /// Логика взаимодействия для AddPromocodeWindow.xaml
+    /// Логика взаимодействия для UpdatePromocodeWindow.xaml
     /// </summary>
-    public partial class AddPromocodeWindow : Window
+    public partial class UpdatePromocodeWindow : Window
     {
         private readonly IPromocodeService _promocodeService;
-
-        public AddPromocodeWindow()
+        private int _promocodeId;
+        public UpdatePromocodeWindow(int promocodeId)
         {
+            _promocodeId = promocodeId;
+
             InitializeComponent();
 
+
             _promocodeService = DependencyResolver.GetService<IPromocodeService>();
+
+            Promocode promocode = _promocodeService.Get(promocodeId);
+
+            Name.Text = promocode.Name;
+            Code.Text = promocode.Code;
+            Discount.Text = promocode.Discount.ToString();
         }
 
         private void addProductCartButton_Click(object sender, RoutedEventArgs e)
         {
             Promocode promocode = new Promocode()
             {
+                Id = _promocodeId,
                 Name = Name.Text,
                 Code = Code.Text,
                 Discount = int.Parse(Discount.Text),
 
             };
-            _promocodeService.Add(promocode);
+            _promocodeService.Update(promocode);
             Close();
         }
     }

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using RobloxShop.Entities;
+using RobloxShop.Services.Interfaces;
+using RobloxShop.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,14 +22,20 @@ namespace RobloxShop.Forms.Windows
     /// </summary>
     public partial class AddWarehouseWindow : Window
     {
+        private readonly IWarehouseService _warehouseService;
+
         public AddWarehouseWindow()
         {
             InitializeComponent();
+            _warehouseService = DependencyResolver.GetService<IWarehouseService>();
         }
 
         private void addProductCartButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Warehouse warehouse = new Warehouse()
+            {
+                Name = addWarehouseTB.Text,
+            };
         }
     }
 }

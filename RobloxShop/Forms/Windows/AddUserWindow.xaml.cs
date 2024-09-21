@@ -1,4 +1,8 @@
-﻿using System;
+﻿using RobloxShop.Entities;
+using RobloxShop.Entities.Enums;
+using RobloxShop.Services.Interfaces;
+using RobloxShop.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,14 +23,44 @@ namespace RobloxShop.Forms.Windows
     /// </summary>
     public partial class AddUserWindow : Window
     {
+        private readonly IUserService _userService;
+        
+
         public AddUserWindow()
         {
             InitializeComponent();
+
+            _userService = DependencyResolver.GetService<IUserService>();
+
+
+            RoleCB.Items.Insert(0, "Пользователь");
+            RoleCB.Items.Insert(1, "Администратор");
+
         }
 
         private void addProductCartButton_Click(object sender, RoutedEventArgs e)
         {
 
+            User user = new User()
+            {
+                Name = NameTB.Text,
+                Surname = SurnameTB.Text,
+                Login = LoginTB.Text,
+                PasswordHash = PasswordTB.Text,
+                Birthday = DateDP.SelectedDate.Value,
+
+                Role = (Role)RoleCB.SelectedIndex 
+
+            };
+
+            _userService.Add(user);
+            Close();
         }
+            
+            
+        
+
+
+
     }
 }

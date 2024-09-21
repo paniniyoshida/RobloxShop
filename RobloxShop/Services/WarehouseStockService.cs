@@ -13,6 +13,11 @@ namespace RobloxShop.Services
     {
         private readonly IWarehouseStockRepository _warehouseStockRepository;
 
+        public WarehouseStockService(IWarehouseStockRepository warehouseStockRepository)
+        {
+            _warehouseStockRepository = warehouseStockRepository;
+        }
+
         public WarehouseStock Add(WarehouseStock entity)
         {
             return _warehouseStockRepository.Add(entity);

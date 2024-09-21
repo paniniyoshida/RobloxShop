@@ -1,11 +1,11 @@
-﻿<Window x:Class="RobloxShop.Forms.Windows.AddWarehouseStockWindow"
+﻿<Window x:Class="RobloxShop.Forms.Windows.Update.UpdateWarehouseStockWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:RobloxShop.Forms.Windows"
+        xmlns:local="clr-namespace:RobloxShop.Forms.Windows.Update"
         mc:Ignorable="d"
-        Title="AddWarehouseStockWindow" Height="163" Width="243">
+            Title="UpdateWarehouseStockWindow" Height="163" Width="243">
     <Grid Margin="0,0,10,11">
         <Label Content="Продукт" HorizontalAlignment="Left" Margin="31,11,0,0" VerticalAlignment="Top"/>
         <Label Content="Количество:" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top"/>
@@ -13,7 +13,7 @@
         <ComboBox x:Name="ProductCB" HorizontalAlignment="Left" Margin="92,16,0,0" VerticalAlignment="Top" Width="120" Height="15"/>
         <TextBox x:Name="ProductAmmountTB" HorizontalAlignment="Left" Margin="92,36,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Height="15"/>
         <ComboBox x:Name="WarehouseCB" HorizontalAlignment="Left" Margin="92,56,0,0" VerticalAlignment="Top" Width="120" Height="15"/>
-        <Button x:Name="addProductCartProviderButton" Content="Добавить" HorizontalAlignment="Left" Margin="31,94,0,0" VerticalAlignment="Top" Width="181" Height="22" Click="addProductCartButton_Click"/>
+        <Button x:Name="addProductCartProviderButton" Content="Обновить" HorizontalAlignment="Left" Margin="31,94,0,0" VerticalAlignment="Top" Width="181" Height="22" Click="addProductCartButton_Click"/>
 
     </Grid>
 </Window>

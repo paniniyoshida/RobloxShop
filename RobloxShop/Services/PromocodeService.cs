@@ -13,6 +13,10 @@ namespace RobloxShop.Services
     {
         private readonly IPromocodeRepository _promocodeRepository;
 
+        public PromocodeService(IPromocodeRepository promocodeRepository)
+        {
+            _promocodeRepository = promocodeRepository;
+        }
         public Promocode Add(Promocode entity)
         {
             return _promocodeRepository.Add(entity);

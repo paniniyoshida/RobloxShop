@@ -1,4 +1,8 @@
-﻿using System;
+﻿using RobloxShop.Entities;
+using RobloxShop.Services;
+using RobloxShop.Services.Interfaces;
+using RobloxShop.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,19 +23,41 @@ namespace RobloxShop.Forms.Windows
     /// </summary>
     public partial class AddProductCartWindow : Window
     {
+        private readonly IUserService _userService;
+        private readonly IProductCartService _productCartService;
+
+
         public AddProductCartWindow()
         {
             InitializeComponent();
+
+            _userService = DependencyResolver.GetService<IUserService>();
+
+
+            List<User> users = _userService.GetAll();
+
+
+            foreach (User user in users)
+            {
+                addUserComboBox.Items.Insert(user.Id, user.Name);
+            }
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
 
-        }
+
+        
 
         private void addProductCartButton_Click(object sender, RoutedEventArgs e)
         {
+            ProductCart productCart = new ProductCart()
+            {
+                UserId = addUserComboBox.SelectedIndex,
 
+            };
+
+            _productCartService.Add(productCart);
+
+            Close();
         }
     }
 }

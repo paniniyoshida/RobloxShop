@@ -10,5 +10,6 @@ namespace RobloxShop.Services.Interfaces
 {
     public interface IUserService : IBaseService<User>
     {
+        User? GetByLoginAndPassword(string username, string password);
     }
 }

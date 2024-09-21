@@ -9,7 +9,7 @@
     <Grid Margin="0,0,4,3">
         <Label Content="Покупатель" HorizontalAlignment="Left" Margin="34,10,0,0" VerticalAlignment="Top"/>
 
-        <ComboBox HorizontalAlignment="Left" Margin="113,16,0,0" VerticalAlignment="Top" Width="120" Height="15" SelectionChanged="ComboBox_SelectionChanged"/>
+        <ComboBox x:Name="addUserComboBox" HorizontalAlignment="Left" Margin="113,16,0,0" VerticalAlignment="Top" Width="120" Height="15"/>
 
         <Button x:Name="addProductCartProviderButton" Content="Добавить" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Width="223" Height="22" Click="addProductCartButton_Click"/>
 
