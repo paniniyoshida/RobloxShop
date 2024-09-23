@@ -62,6 +62,25 @@ namespace RobloxShop.Forms.Windows.Update
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+
+            if(!decimal.TryParse (productComboBox.Text, out decimal price))
+            {
+                MessageBox.Show("Неверно введено значение цены");
+                return;
+            }
+
+            if (productComboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Не выбран продукт");
+                return;
+            }
+
+            if (checkComboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Не выбран чек");
+                return;
+            }
+
             CheckPosition checkPosition = new CheckPosition()
             {
                 Id = _checkPositionId,

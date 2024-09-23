@@ -1,4 +1,5 @@
 ﻿using RobloxShop.Forms.Windows;
+using RobloxShop.Forms.Windows.Update;
 using RobloxShop.Services;
 using RobloxShop.Services.Interfaces;
 using RobloxShop.Utils;
@@ -65,7 +66,10 @@ namespace RobloxShop.Forms.Pages
 
         private void update_button_Click(object sender, RoutedEventArgs e)
         {
-            
+            var viewdata = table_grid.SelectedItem as CategoryViewData;
+            UpdateCategoryWindow categoryWindow = new UpdateCategoryWindow(viewdata.Id);
+            categoryWindow.ShowDialog();
+            Reload();
         }
     }
 }

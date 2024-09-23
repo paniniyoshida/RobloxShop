@@ -1,4 +1,7 @@
-﻿using System;
+﻿using RobloxShop.Entities;
+using RobloxShop.Services.Interfaces;
+using RobloxShop.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,14 +22,37 @@ namespace RobloxShop.Forms.Windows.Update
     /// </summary>
     public partial class UpdatePaymentProviderWindow : Window
     {
-        public UpdatePaymentProviderWindow()
+        private readonly IPaymentProviderService _paymentProviderService;
+        private int _paymentProviderId;
+
+        public UpdatePaymentProviderWindow(int paymentProviderId)
         {
             InitializeComponent();
+            _paymentProviderService = DependencyResolver.GetService<IPaymentProviderService>();
+            _paymentProviderId = paymentProviderId;
+
+            PaymentProvider paymentProvider = _paymentProviderService.Get(paymentProviderId);
+
+            addProviderName.Text = paymentProvider.Name;
         }
 
         private void addCheckButton_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrEmpty(addProviderName.Text))
+            {
+                MessageBox.Show("Название должно быть заполнено");
+                return;
+            }
 
+            PaymentProvider paymentProvider = new PaymentProvider()
+            {
+                Name = addProviderName.Text,
+                CreationDate = DateTime.UtcNow,
+            };
+
+            _paymentProviderService.Update(paymentProvider);
+
+            Close();
         }
     }
 }

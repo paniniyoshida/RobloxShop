@@ -42,7 +42,7 @@ namespace RobloxShop.Forms.Windows
                 return;
             }
             Hide();
-            MainWindow mainWindow = new MainWindow();
+            MainWindow mainWindow = new MainWindow(user.Role);
             mainWindow.ShowDialog();
             Show();
 

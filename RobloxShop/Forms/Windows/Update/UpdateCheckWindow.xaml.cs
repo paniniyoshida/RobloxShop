@@ -71,7 +71,7 @@ namespace RobloxShop.Forms.Windows.Update
                 Date = addDateDatePicker.SelectedDate.Value
             };
 
-            _checkService.Add(check);
+            _checkService.Update(check);
         }
     }
 }
