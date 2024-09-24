@@ -56,6 +56,9 @@ namespace RobloxShop.Forms.Windows
                 ProductId = ProductCB.SelectedIndex,
                 Amount = int.Parse(ProductAmmountTB.Text)
             };
+
+            _warehouseStockService.Add(warehouseStock);
+            Close();
         }
     }
 }

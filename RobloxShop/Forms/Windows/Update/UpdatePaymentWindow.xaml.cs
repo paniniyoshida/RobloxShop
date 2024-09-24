@@ -76,6 +76,8 @@ namespace RobloxShop.Forms.Windows.Update
 
             Payment payment = new Payment()
             {
+                Id = _paymentId,
+
                 CheckID = addCheckIdComboBox.SelectedIndex,
 
                 PaymentProviderID = addProviderComboBox.SelectedIndex,

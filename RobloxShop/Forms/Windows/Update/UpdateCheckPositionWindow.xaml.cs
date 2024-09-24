@@ -27,6 +27,9 @@ namespace RobloxShop.Forms.Windows.Update
         private readonly ICheckPositionService _positionService;
         private int _checkPositionId = 0;
 
+        private readonly Dictionary<int, int> _productComboBoxMap = new Dictionary<int, int>();
+        private readonly Dictionary<int, int> _checkComboBoxMap = new Dictionary<int, int>();
+
         public UpdateCheckPositionWindow(int checkPositionId)
         {
             _checkPositionId = checkPositionId;
@@ -41,23 +44,29 @@ namespace RobloxShop.Forms.Windows.Update
             List<Check> checks = _checkService.GetAll();
 
 
+            int productComboBoxIndex = 0;
             foreach (Product product in products)
             {
-                productComboBox.Items.Insert(product.Id, product.Name);
-
+                _productComboBoxMap.Add(productComboBoxIndex, product.Id);
+                productComboBox.Items.Insert(productComboBoxIndex, product.Name);
+                productComboBoxIndex++;
             }
 
+
+            int checkComboBoxIndex = 0;
             foreach (Check check in checks)
             {
-                checkComboBox.Items.Insert(check.Id, check.Id);
+                _checkComboBoxMap.Add(checkComboBoxIndex, check.Id);
+                checkComboBox.Items.Insert(checkComboBoxIndex, check.Id);
+                checkComboBoxIndex++;
             }
 
             CheckPosition checkPosition = _positionService.Get(checkPositionId);
 
             productPriceTextBox.Text = checkPosition.Price.ToString();
             productAmmountTextBox.Text = checkPosition.Amount.ToString();
-            productComboBox.SelectedIndex = checkPosition.ProductID;
-            checkComboBox.SelectedIndex = checkPosition.CheckID;
+            productComboBox.SelectedIndex =_productComboBoxMap.FirstOrDefault(x => x.Value == checkPosition.ProductID).Key;
+            checkComboBox.SelectedIndex =_checkComboBoxMap.FirstOrDefault(x => x.Value == checkPosition.CheckID).Key;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -86,8 +95,8 @@ namespace RobloxShop.Forms.Windows.Update
                 Id = _checkPositionId,
                 Price = decimal.Parse(productPriceTextBox.Text),
                 Amount = int.Parse(productAmmountTextBox.Text),
-                ProductID = productComboBox.SelectedIndex,
-                CheckID = checkComboBox.SelectedIndex,
+                ProductID =_productComboBoxMap[productComboBox.SelectedIndex],
+                CheckID =_checkComboBoxMap[checkComboBox.SelectedIndex],
             };
             _positionService.Update(checkPosition);
             Close();

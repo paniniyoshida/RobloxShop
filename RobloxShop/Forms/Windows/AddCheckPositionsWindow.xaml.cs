@@ -27,6 +27,10 @@ namespace RobloxShop.Forms.Windows
         private readonly IProductService _productService;
         private readonly ICheckPositionService _positionService;
 
+        private readonly Dictionary<int, int> _productComboBoxMap = new Dictionary<int, int>();
+        private readonly Dictionary<int, int> _checkComboBoxMap = new Dictionary<int, int>();
+
+
         public AddCheckPositionsWindow()
         {
             InitializeComponent();
@@ -39,15 +43,21 @@ namespace RobloxShop.Forms.Windows
             List<Check> checks = _checkService.GetAll();
 
 
+            int productComboBoxIndex = 0;
             foreach (Product product in products)
             {
-                productComboBox.Items.Insert(product.Id, product.Name);
-
+                _productComboBoxMap.Add(productComboBoxIndex, product.Id);
+                productComboBox.Items.Insert(productComboBoxIndex, product.Name);
+                productComboBoxIndex++;
             }
 
+
+            int checkComboBoxIndex = 0;
             foreach (Check check in checks)
             {
-                checkComboBox.Items.Insert(check.Id, check.Id);
+                _checkComboBoxMap.Add(checkComboBoxIndex, check.Id);
+                checkComboBox.Items.Insert(checkComboBoxIndex, check.Id);
+                checkComboBoxIndex++;
             }
         }
 
@@ -75,8 +85,8 @@ namespace RobloxShop.Forms.Windows
             {
                 Price = decimal.Parse(productPriceTextBox.Text),
                 Amount = int.Parse(productAmmountTextBox.Text),
-                ProductID = productComboBox.SelectedIndex,
-                CheckID = checkComboBox.SelectedIndex,
+                ProductID =_productComboBoxMap[productComboBox.SelectedIndex],
+                CheckID =_checkComboBoxMap[checkComboBox.SelectedIndex],
             };
             _positionService.Add(checkPosition);
             Close();

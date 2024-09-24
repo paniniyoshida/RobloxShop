@@ -70,7 +70,8 @@ namespace RobloxShop.Forms.Pages
             {
                 Id = t.Id,
                 Name = t.Name,
-                Code = t.Code
+                Code = t.Code,
+                Discount = t.Discount,
             });
         }
 
@@ -81,6 +82,8 @@ namespace RobloxShop.Forms.Pages
             public string Name { get; set; }
 
             public string Code {  get; set; }
+
+            public int Discount { get; set; }
         }
     }
 }

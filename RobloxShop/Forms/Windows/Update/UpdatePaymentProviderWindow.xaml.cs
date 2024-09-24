@@ -46,6 +46,7 @@ namespace RobloxShop.Forms.Windows.Update
 
             PaymentProvider paymentProvider = new PaymentProvider()
             {
+                Id = _paymentProviderId,
                 Name = addProviderName.Text,
                 CreationDate = DateTime.UtcNow,
             };

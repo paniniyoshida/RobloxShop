@@ -36,6 +36,9 @@ namespace RobloxShop.Forms.Windows
             {
                 Name = addWarehouseTB.Text,
             };
+
+            _warehouseService.Add(warehouse);
+            Close();
         }
     }
 }

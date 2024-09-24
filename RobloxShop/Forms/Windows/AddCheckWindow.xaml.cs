@@ -29,6 +29,9 @@ namespace RobloxShop.Forms.Windows
 
         private readonly ICheckService _checkService;
 
+        private readonly Dictionary<int, int> _promocodeComboBoxMap = new Dictionary<int, int>();
+        private readonly Dictionary<int, int> _userComboBoxMap = new Dictionary<int, int>();
+
 
 
         public AddCheckWindow()
@@ -43,15 +46,22 @@ namespace RobloxShop.Forms.Windows
 
             List<User> users = _userService.GetAll();
 
+            addPromocodeComboBox.Items.Insert(0, "Пусто");
 
+            int addPromocodeComboBoxIndex = 0;
             foreach (Promocode promocode in promocodes)
             {
-                addPromocodeComboBox.Items.Insert(promocode.Id, promocode.Name);
+                _promocodeComboBoxMap.Add(addPromocodeComboBoxIndex, promocode.Id);
+                addPromocodeComboBox.Items.Insert(addPromocodeComboBoxIndex, promocode.Name);
+                addPromocodeComboBoxIndex++;
             }
 
+            int addUserComboBoxIndex = 0;
             foreach (User user in users)
             {
-                addUserComboBox.Items.Insert(user.Id, user.Name + " " + user.Surname);
+                _userComboBoxMap.Add(addUserComboBoxIndex, user.Id);
+                addUserComboBox.Items.Insert(addUserComboBoxIndex, user.Name + " " + user.Surname);
+                addPromocodeComboBoxIndex ++;
             }
 
         }
@@ -60,8 +70,8 @@ namespace RobloxShop.Forms.Windows
         {
             Check check = new Check()
             {
-                UserID = addUserComboBox.SelectedIndex,
-                PromocodeID = addPromocodeComboBox.SelectedIndex,
+                UserID =_userComboBoxMap[addUserComboBox.SelectedIndex],
+                PromocodeID =_promocodeComboBoxMap[addPromocodeComboBox.SelectedIndex],
                 Date = addDateDatePicker.SelectedDate.Value
             };
 

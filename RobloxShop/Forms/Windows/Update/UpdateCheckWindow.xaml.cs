@@ -29,6 +29,9 @@ namespace RobloxShop.Forms.Windows.Update
         private readonly IPromocodeService _promocodeService;
         private int _checkId = 0;
 
+        private readonly Dictionary<int, int> _promocodeComboBoxMap = new Dictionary<int, int>();
+        private readonly Dictionary<int, int> _userComboBoxMap = new Dictionary<int, int>();
+
         public UpdateCheckWindow(int checkId)
         {
             _checkId = checkId;
@@ -41,23 +44,29 @@ namespace RobloxShop.Forms.Windows.Update
             List<User> users = _userService.GetAll();
             List<Promocode> promocodes = _promocodeService.GetAll();
 
-            foreach (User user in users)
-            {
-                addUserComboBox.Items.Insert(user.Id, user.Name + " " + user.Surname);
-            }
-
+            int addPromocodeComboBoxIndex = 0;
             foreach (Promocode promocode in promocodes)
             {
-                addPromocodeComboBox.Items.Insert(promocode.Id, promocode.Name);
+                _promocodeComboBoxMap.Add(addPromocodeComboBoxIndex, promocode.Id);
+                addPromocodeComboBox.Items.Insert(addPromocodeComboBoxIndex, promocode.Name);
+                addPromocodeComboBoxIndex++;
+            }
+
+            int addUserComboBoxIndex = 0;
+            foreach (User user in users)
+            {
+                _userComboBoxMap.Add(addUserComboBoxIndex, user.Id);
+                addUserComboBox.Items.Insert(addUserComboBoxIndex, user.Name + " " + user.Surname);
+                addPromocodeComboBoxIndex++;
             }
 
             Check check = _checkService.Get(checkId);
 
             addDateDatePicker.DisplayDate = check.Date;
 
-            addUserComboBox.SelectedIndex = check.UserID;
+            addUserComboBox.SelectedIndex = _userComboBoxMap.FirstOrDefault(x => x.Value == check.UserID).Key;
 
-            addPromocodeComboBox.SelectedIndex = check.PromocodeID ?? 0;
+            addPromocodeComboBox.SelectedIndex =_promocodeComboBoxMap.FirstOrDefault(x => x.Value == (check.PromocodeID ?? 0)).Key;
         }
 
         private void addCheckButton_Click(object sender, RoutedEventArgs e)
@@ -66,12 +75,13 @@ namespace RobloxShop.Forms.Windows.Update
             Check check = new Check()
             {
                 Id = _checkId,
-                UserID = addUserComboBox.SelectedIndex,
-                PromocodeID = addPromocodeComboBox.SelectedIndex,
+                UserID = _userComboBoxMap[addUserComboBox.SelectedIndex],
+                PromocodeID = _promocodeComboBoxMap[addPromocodeComboBox.SelectedIndex],
                 Date = addDateDatePicker.SelectedDate.Value
             };
 
             _checkService.Update(check);
+            Close();
         }
     }
 }

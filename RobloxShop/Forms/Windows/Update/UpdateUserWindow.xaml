@@ -18,7 +18,7 @@
         <TextBox x:Name="LoginTB" HorizontalAlignment="Left" Margin="110,58,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="PasswordTB" HorizontalAlignment="Left" Margin="110,81,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <DatePicker x:Name="DateDP" HorizontalAlignment="Left" Margin="110,132,0,0" VerticalAlignment="Top" Height="25" Width="120"/>
-        <ComboBox HorizontalAlignment="Left" Margin="110,105,0,0" VerticalAlignment="Top" Width="120" Height="15"/>
+        <ComboBox x:Name="RoleCB" HorizontalAlignment="Left" Margin="110,105,0,0" VerticalAlignment="Top" Width="120" Height="15"/>
         <Button x:Name="addProductCartProviderButton" Content="Обновить" HorizontalAlignment="Left" Margin="11,171,0,0" VerticalAlignment="Top" Width="219" Height="22" Click="addProductCartButton_Click"/>
 
     </Grid>
