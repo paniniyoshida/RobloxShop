@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using RobloxShop.Entities;
 using RobloxShop.Repository.Interfaces;
 using System;
@@ -39,13 +40,13 @@ namespace RobloxShop.Repository
         public Warehouse Get(int id)
         {
             using ShopContext shopContext = new ShopContext();
-            return shopContext.Warehouses.FirstOrDefault(w => w.Id == id);
+            return shopContext.Warehouses.Include(x => x.Stocks).FirstOrDefault(w => w.Id == id);
         }
 
         public List<Warehouse> GetAll()
         {
             using ShopContext shopContext = new ShopContext();
-            return shopContext.Warehouses.ToList();
+            return shopContext.Warehouses.Include(x => x.Stocks).ToList();
         }
 
         public Warehouse Update(Warehouse entity)

@@ -40,6 +40,8 @@
             <Button x:Name="add_button" Grid.Column="0" Content="Добавить запись" Click="add_button_Click"></Button>
             <Button x:Name="del_button" Grid.Column="1" Content="Удалить запись" Click="delete_button_Click" HorizontalAlignment="Left" Width="200"/>
             <Button x:Name="alter_button" Grid.Column="2" Content="Изменить запись" Click="update_button_Click"></Button>
+            <Button x:Name="export_button" Grid.Column="3" Content="Экспорт" Click="export_button_Click" Margin="100,0,0,0"></Button>
+            <Button x:Name="import_button" Grid.Column="3" Content="Импорт" Click="import_button_Click" Margin="0,0,100,0"></Button>
         </Grid>
         <Label Content="ProductCartPage" HorizontalAlignment="Center"  VerticalAlignment="Top"/>
     </Grid>

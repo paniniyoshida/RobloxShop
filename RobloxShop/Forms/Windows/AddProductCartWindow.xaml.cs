@@ -26,6 +26,9 @@ namespace RobloxShop.Forms.Windows
         private readonly IUserService _userService;
         private readonly IProductCartService _productCartService;
 
+        private readonly Dictionary<int, int> _userComboBoxMap = new Dictionary<int, int>();
+
+
 
         public AddProductCartWindow()
         {
@@ -33,13 +36,17 @@ namespace RobloxShop.Forms.Windows
 
             _userService = DependencyResolver.GetService<IUserService>();
 
+            _productCartService = DependencyResolver.GetService<IProductCartService>();
 
             List<User> users = _userService.GetAll();
 
 
+            int UserIndex = 0;
             foreach (User user in users)
             {
-                addUserComboBox.Items.Insert(user.Id, user.Name);
+                _userComboBoxMap.Add(UserIndex, user.Id);
+                addUserComboBox.Items.Insert(UserIndex, user.Name + "" + user.Surname);
+                UserIndex++;
             }
         }
 
@@ -51,7 +58,7 @@ namespace RobloxShop.Forms.Windows
         {
             ProductCart productCart = new ProductCart()
             {
-                UserId = addUserComboBox.SelectedIndex,
+                UserId = _userComboBoxMap[addUserComboBox.SelectedIndex]
 
             };
 

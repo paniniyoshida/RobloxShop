@@ -42,6 +42,8 @@ namespace RobloxShop.Forms.Pages
             }
 
             _productService = DependencyResolver.GetService<IProductService>();
+            Reload();
+
         }
 
         private void add_button_Click(object sender, RoutedEventArgs e)

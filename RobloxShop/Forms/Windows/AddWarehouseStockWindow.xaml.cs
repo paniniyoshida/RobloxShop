@@ -26,6 +26,10 @@ namespace RobloxShop.Forms.Windows
         private readonly IProductService _productService;
         private readonly IWarehouseService _warehouseService;
 
+
+        private readonly Dictionary<int, int> _productComboBoxMap = new Dictionary<int, int>();
+        private readonly Dictionary<int, int> _warehouseComboBoxMap = new Dictionary<int, int>();
+
         public AddWarehouseStockWindow()
         {
             InitializeComponent();
@@ -37,14 +41,21 @@ namespace RobloxShop.Forms.Windows
             List<Warehouse> warehouses = _warehouseService.GetAll();
             List<Product> products = _productService.GetAll();
 
-            foreach (Warehouse warehouse in warehouses)
-            {
-                WarehouseCB.Items.Insert(warehouse.Id, warehouse.Name);
-            }
-
+            int ProductIndex = 0;
             foreach (Product product in products)
             {
-                ProductCB.Items.Insert(product.Id, product.Name);
+                _productComboBoxMap.Add(ProductIndex, product.Id);
+                ProductCB.Items.Insert(ProductIndex, product.Name);
+                ProductIndex++;
+            }
+
+
+            int WarehouseIndex = 0;
+            foreach (Warehouse warehouse in warehouses)
+            {
+                _warehouseComboBoxMap.Add(WarehouseIndex, warehouse.Id);
+                WarehouseCB.Items.Insert(WarehouseIndex, warehouse.Name);
+                WarehouseIndex++;
             }
         }
 
@@ -52,8 +63,8 @@ namespace RobloxShop.Forms.Windows
         {
             WarehouseStock warehouseStock = new WarehouseStock()
             {
-                WarehouseID = WarehouseCB.SelectedIndex,
-                ProductId = ProductCB.SelectedIndex,
+                WarehouseID = _warehouseComboBoxMap[WarehouseCB.SelectedIndex],
+                ProductId = _productComboBoxMap[ProductCB.SelectedIndex],
                 Amount = int.Parse(ProductAmmountTB.Text)
             };
 

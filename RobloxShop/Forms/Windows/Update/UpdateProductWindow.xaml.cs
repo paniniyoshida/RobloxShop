@@ -29,6 +29,9 @@ namespace RobloxShop.Forms.Windows.Update
 
         private int _productId;
 
+        private readonly Dictionary<int, int> _categoryComboBoxMap = new Dictionary<int, int>();
+
+
         public UpdateProductWindow(int productId)
         {
             _productId = productId;
@@ -41,12 +44,16 @@ namespace RobloxShop.Forms.Windows.Update
 
             List<Category> categories = _categoryService.GetAll();
 
+
+            int CategoryIndex = 0;
             foreach (Category category in categories)
             {
-                categoryComboBox.Items.Insert(category.Id, category.Name);
+                _categoryComboBoxMap.Add(CategoryIndex, category.Id);
+                categoryComboBox.Items.Insert(CategoryIndex, category.Name);
+                CategoryIndex++;
             }
 
-            categoryComboBox.SelectedIndex = product.CategoryID;
+            categoryComboBox.SelectedIndex = _categoryComboBoxMap.FirstOrDefault(x => x.Value == product.CategoryID).Key;
             productNameTextBox.Text = product.Name;
             productPriceTextBox.Text = product.Price.ToString();
             productDescriprionTextBox.Text = product.Description;
@@ -62,7 +69,7 @@ namespace RobloxShop.Forms.Windows.Update
                 Name = productNameTextBox.Text,
                 Price = decimal.Parse(productPriceTextBox.Text),
                 Description = productDescriprionTextBox.Text,
-                CategoryID = categoryComboBox.SelectedIndex
+                CategoryID = _categoryComboBoxMap[categoryComboBox.SelectedIndex]
 
             };
 

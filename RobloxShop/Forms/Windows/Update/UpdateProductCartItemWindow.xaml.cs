@@ -30,6 +30,9 @@ namespace RobloxShop.Forms.Windows.Update
 
         private int _productCartItemId;
 
+        private readonly Dictionary<int, int> _productComboBoxMap = new Dictionary<int, int>();
+        private readonly Dictionary<int, int> _cartItemComboBoxMap = new Dictionary<int, int>();
+
         public UpdateProductCartItemWindow(int producCartItemtId)
         {
             _productCartItemId = producCartItemtId;
@@ -45,18 +48,26 @@ namespace RobloxShop.Forms.Windows.Update
             List<Product> products = _productService.GetAll();
             List<ProductCartItem> productCartItems = _cartItemService.GetAll();
 
+
+            int ProductIndex = 0;
             foreach (Product product in products)
             {
-                addProductComboBox.Items.Insert(product.Id, product.Name);
+                _productComboBoxMap.Add(ProductIndex, product.Id);
+                addProductComboBox.Items.Insert(ProductIndex, product.Name);
+                ProductIndex++;
             }
 
+
+            int ProductCartItemIndex = 0;
             foreach (ProductCartItem productCartItem in productCartItems)
             {
-                addCartComboBox.Items.Insert(productCartItem.Id, productCartItem.Id);
+                _cartItemComboBoxMap.Add(ProductCartItemIndex, productCartItem.Id);
+                addCartComboBox.Items.Insert(ProductCartItemIndex, productCartItem.Id);
+                ProductCartItemIndex++;
             }
 
-            addProductComboBox.SelectedIndex = cartItem.ProductId;
-            addCartComboBox.SelectedIndex = cartItem.ProductCartId;
+            addProductComboBox.SelectedIndex = _productComboBoxMap.FirstOrDefault(x => x.Value == cartItem.ProductId).Key;
+            addCartComboBox.SelectedIndex = _cartItemComboBoxMap.FirstOrDefault(x => x.Value == cartItem.ProductCartId).Key;
 
             addAmmountTextBox.Text = cartItem.Amount.ToString();
         }
@@ -66,8 +77,8 @@ namespace RobloxShop.Forms.Windows.Update
             ProductCartItem productCartItem = new ProductCartItem()
             {
                 Id = _productCartItemId,
-                ProductId = addProductComboBox.SelectedIndex,
-                ProductCartId = addCartComboBox.SelectedIndex,
+                ProductId = _productComboBoxMap[addProductComboBox.SelectedIndex],
+                ProductCartId = _cartItemComboBoxMap[addCartComboBox.SelectedIndex],
                 Amount = int.Parse(addAmmountTextBox.Text)
             };
 

@@ -56,6 +56,10 @@ namespace RobloxShop.Forms.Pages
         private void update_button_Click(object sender, RoutedEventArgs e)
         {
             var viewdata = table_grid.SelectedItem as WarehousePageViewData;
+            if (viewdata == null)
+            {
+                return;
+            }
 
             UpdateWarehouseWindow warehouseWindow = new UpdateWarehouseWindow(viewdata.Id);
 

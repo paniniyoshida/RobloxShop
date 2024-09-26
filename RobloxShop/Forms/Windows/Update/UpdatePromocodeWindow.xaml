@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:RobloxShop.Forms.Windows.Update"
         mc:Ignorable="d"
             Title="UpdatePromocodeWindow" Height="150" Width="223">
-    <Grid Margin="0,0,10,7">
+    <Grid>
         <Label Content="Название:" HorizontalAlignment="Left" Margin="17,10,0,0" VerticalAlignment="Top"/>
         <Label Content="Код:" HorizontalAlignment="Left" Margin="49,36,0,0" VerticalAlignment="Top"/>
         <Label Content="Скидка:" HorizontalAlignment="Left" Margin="31,62,0,0" VerticalAlignment="Top"/>

@@ -30,6 +30,9 @@ namespace RobloxShop.Forms.Windows.Update
 
         private int _paymentId;
 
+        private readonly Dictionary<int, int> _providerComboBoxMap = new Dictionary<int, int>();
+        private readonly Dictionary<int, int> _checkComboBoxMap = new Dictionary<int, int>();
+
         public UpdatePaymentWindow(int paymentId)
         {
             _paymentId = paymentId;
@@ -42,20 +45,27 @@ namespace RobloxShop.Forms.Windows.Update
 
             List<Check> checks = _checkService.GetAll();
 
+            int CheckComboBoxIndex = 0;
             foreach (Check check in checks)
             {
-                addCheckIdComboBox.Items.Insert(check.Id, check.Id);
+                _checkComboBoxMap.Add(CheckComboBoxIndex, check.Id);
+                addCheckIdComboBox.Items.Insert(CheckComboBoxIndex, check.Id);
+                CheckComboBoxIndex++;
             }
 
             List<PaymentProvider> paymentProviders = _paymentProviderService.GetAll();
 
+
+            int PaymentProviderIndex = 0;
             foreach(PaymentProvider paymentProvider in paymentProviders)
             {
-                addProviderComboBox.Items.Insert(paymentProvider.Id, paymentProvider.Name);
+                _providerComboBoxMap.Add(PaymentProviderIndex, paymentProvider.Id);
+                addProviderComboBox.Items.Insert(PaymentProviderIndex, paymentProvider.Name);
+                PaymentProviderIndex++;
             }
 
-            addCheckIdComboBox.SelectedIndex = payment.CheckID;
-            addProviderComboBox.SelectedIndex = payment.PaymentProviderID;
+            addCheckIdComboBox.SelectedIndex = _checkComboBoxMap.FirstOrDefault(x => x.Value == payment.CheckID).Key;
+            addProviderComboBox.SelectedIndex = _providerComboBoxMap.FirstOrDefault(x => x.Value == payment.PaymentProviderID).Key;
 
 
         }
@@ -78,9 +88,9 @@ namespace RobloxShop.Forms.Windows.Update
             {
                 Id = _paymentId,
 
-                CheckID = addCheckIdComboBox.SelectedIndex,
+                CheckID = _checkComboBoxMap[addCheckIdComboBox.SelectedIndex],
 
-                PaymentProviderID = addProviderComboBox.SelectedIndex,
+                PaymentProviderID = _providerComboBoxMap[addProviderComboBox.SelectedIndex]
             };
 
             _paymentService.Update(payment);

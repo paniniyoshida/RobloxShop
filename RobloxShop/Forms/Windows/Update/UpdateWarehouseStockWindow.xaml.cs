@@ -30,6 +30,12 @@ namespace RobloxShop.Forms.Windows.Update
 
         private int _warehouseStockId;
 
+        private readonly Dictionary<int, int> _productComboBoxMap = new Dictionary<int, int>();
+        private readonly Dictionary<int, int> _warehouseComboBoxMap = new Dictionary<int, int>();
+
+
+
+
 
 
         public UpdateWarehouseStockWindow(int warehouseStockId)
@@ -44,19 +50,28 @@ namespace RobloxShop.Forms.Windows.Update
             WarehouseStock warehouseStock = _warehouseStockService.Get(warehouseStockId);
 
             List<Product> products = _productService.GetAll();
+
+            int ProductIndex = 0;
             foreach (Product product in products)
             {
-                ProductCB.Items.Insert(product.Id, product.Name);
+                _productComboBoxMap.Add(ProductIndex, product.Id);
+                ProductCB.Items.Insert(ProductIndex, product.Name);
+                ProductIndex++;
             }
 
             List<Warehouse> warehouses = _warehouseService.GetAll();
+
+
+            int WarehouseIndex = 0;
             foreach (Warehouse warehouse in warehouses)
             {
-                WarehouseCB.Items.Insert(warehouse.Id, warehouse.Name);
+                _warehouseComboBoxMap.Add(WarehouseIndex, warehouse.Id);
+                WarehouseCB.Items.Insert(WarehouseIndex, warehouse.Name);
+                WarehouseIndex++;
             }
 
-            ProductCB.SelectedIndex = warehouseStock.ProductId;
-            WarehouseCB.SelectedIndex = warehouseStock.WarehouseID;
+            ProductCB.SelectedIndex = _productComboBoxMap.FirstOrDefault(x => x.Value == warehouseStock.ProductId).Key;
+            WarehouseCB.SelectedIndex = _warehouseComboBoxMap.FirstOrDefault(x => x.Value == warehouseStock.WarehouseID).Key;
             ProductAmmountTB.Text = warehouseStock.Amount.ToString();
         }
 
@@ -65,8 +80,8 @@ namespace RobloxShop.Forms.Windows.Update
             WarehouseStock warehouseStock = new WarehouseStock()
             {
                 Id = _warehouseStockId,
-                WarehouseID = WarehouseCB.SelectedIndex,
-                ProductId = ProductCB.SelectedIndex,
+                WarehouseID = _warehouseComboBoxMap[WarehouseCB.SelectedIndex],
+                ProductId = _productComboBoxMap[ProductCB.SelectedIndex],
                 Amount = int.Parse(ProductAmmountTB.Text)
             };
 

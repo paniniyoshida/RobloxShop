@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:RobloxShop.Forms.Windows"
         mc:Ignorable="d"
         Title="LoginWindow" Height="153" Width="207">
-    <Grid Margin="0,0,10,11">
+    <Grid Margin="0,0,0,1">
         <TextBox x:Name="Login" HorizontalAlignment="Left" Margin="69,15,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Height="15"/>
         <TextBox x:Name="Password" HorizontalAlignment="Left" Margin="69,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Height="15" />
         <Label  Content="Логин:" HorizontalAlignment="Left" Margin="18,10,0,0" VerticalAlignment="Top"/>

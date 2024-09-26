@@ -28,6 +28,9 @@ namespace RobloxShop.Forms.Windows
         private readonly IPaymentProviderService _paymentProviderService;
         private readonly IPaymentService _paymentService;
 
+        private readonly Dictionary<int, int> _providerComboBoxMap = new Dictionary<int, int>();
+        private readonly Dictionary<int, int> _checkComboBoxMap = new Dictionary<int, int>();
+
         public AddPaymentWindow()
         {
             InitializeComponent();
@@ -38,15 +41,22 @@ namespace RobloxShop.Forms.Windows
             List<PaymentProvider> paymentProviders = _paymentProviderService.GetAll();
             List<Check> checks = _checkService.GetAll();
 
+            int CheckComboBoxIndex = 0;
             foreach (Check check in checks)
             {
-                addCheckIdComboBox.Items.Insert(check.Id, check.Id);
-
+                _checkComboBoxMap.Add(CheckComboBoxIndex, check.Id);
+                addCheckIdComboBox.Items.Insert(CheckComboBoxIndex, check.Id);
+                CheckComboBoxIndex++;
             }
 
+
+
+            int PaymentProviderIndex = 0;
             foreach (PaymentProvider paymentProvider in paymentProviders)
             {
-                addProviderComboBox.Items.Insert(paymentProvider.Id, paymentProvider.Name);
+                _providerComboBoxMap.Add(PaymentProviderIndex, paymentProvider.Id);
+                addProviderComboBox.Items.Insert(PaymentProviderIndex, paymentProvider.Name);
+                PaymentProviderIndex++;
             }
         }
 
@@ -54,9 +64,9 @@ namespace RobloxShop.Forms.Windows
         {
             Payment payment = new Payment()
             {
-                CheckID = addCheckIdComboBox.SelectedIndex,
+                CheckID = _checkComboBoxMap[addCheckIdComboBox.SelectedIndex],
 
-                PaymentProviderID = addProviderComboBox.SelectedIndex,
+                PaymentProviderID = _providerComboBoxMap[addProviderComboBox.SelectedIndex]
             };
 
             _paymentService.Add(payment);

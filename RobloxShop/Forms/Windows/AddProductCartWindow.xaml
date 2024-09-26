@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:RobloxShop.Forms.Windows"
         mc:Ignorable="d"
         Title="AddProductCartWindow" Height="118" Width="244">
-    <Grid Margin="0,0,4,3">
+    <Grid>
         <Label Content="Покупатель" HorizontalAlignment="Left" Margin="34,10,0,0" VerticalAlignment="Top"/>
 
         <ComboBox x:Name="addUserComboBox" HorizontalAlignment="Left" Margin="113,16,0,0" VerticalAlignment="Top" Width="120" Height="15"/>

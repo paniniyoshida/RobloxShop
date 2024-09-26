@@ -32,6 +32,8 @@ namespace RobloxShop.Forms.Pages
             InitializeComponent();
 
             _paymentProviderService = DependencyResolver.GetService<IPaymentProviderService>();
+            Reload();
+
         }
 
         private void add_button_Click(object sender, RoutedEventArgs e)

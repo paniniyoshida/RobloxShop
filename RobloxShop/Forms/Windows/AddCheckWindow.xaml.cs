@@ -61,7 +61,7 @@ namespace RobloxShop.Forms.Windows
             {
                 _userComboBoxMap.Add(addUserComboBoxIndex, user.Id);
                 addUserComboBox.Items.Insert(addUserComboBoxIndex, user.Name + " " + user.Surname);
-                addPromocodeComboBoxIndex ++;
+                addUserComboBoxIndex++;
             }
 
         }
@@ -76,6 +76,8 @@ namespace RobloxShop.Forms.Windows
             };
 
             _checkService.Add(check);
+            Close();
+
         }
     }
 }

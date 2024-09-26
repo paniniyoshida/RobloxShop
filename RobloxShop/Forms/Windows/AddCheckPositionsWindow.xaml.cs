@@ -63,7 +63,7 @@ namespace RobloxShop.Forms.Windows
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (!decimal.TryParse(productComboBox.Text, out decimal price))
+            if (!decimal.TryParse(productPriceTextBox.Text, out decimal price))
             {
                 MessageBox.Show("Неверно введено значение цены");
                 return;

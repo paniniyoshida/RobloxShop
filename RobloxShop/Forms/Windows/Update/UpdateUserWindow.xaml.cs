@@ -28,6 +28,9 @@ namespace RobloxShop.Forms.Windows.Update
 
         private int _userId;
 
+        private readonly Dictionary<int, int> _userComboBoxMap = new Dictionary<int, int>();
+
+
         public UpdateUserWindow(int userId)
         {
             _userId = userId;
@@ -41,7 +44,7 @@ namespace RobloxShop.Forms.Windows.Update
 
             User user = _userService.Get(userId);
 
-            RoleCB.SelectedIndex = (int)user.Role;
+            RoleCB.SelectedIndex = _userComboBoxMap.FirstOrDefault(x => x.Value == (int)user.Role).Key;
 
             NameTB.Text = user.Name;
             SurnameTB.Text = user.Surname;

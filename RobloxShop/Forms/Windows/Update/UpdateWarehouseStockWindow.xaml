@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:RobloxShop.Forms.Windows.Update"
         mc:Ignorable="d"
             Title="UpdateWarehouseStockWindow" Height="163" Width="243">
-    <Grid Margin="0,0,10,11">
+    <Grid Margin="0,0,0,1">
         <Label Content="Продукт" HorizontalAlignment="Left" Margin="31,11,0,0" VerticalAlignment="Top"/>
         <Label Content="Количество:" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top"/>
         <Label Content="Склад" HorizontalAlignment="Left" Margin="44,50,0,0" VerticalAlignment="Top"/>

@@ -33,6 +33,8 @@ namespace RobloxShop.Forms.Pages
             InitializeComponent();
 
             _checkService = DependencyResolver.GetService<ICheckService>();
+            Reload();
+
         }
 
         private void add_button_Click(object sender, RoutedEventArgs e)

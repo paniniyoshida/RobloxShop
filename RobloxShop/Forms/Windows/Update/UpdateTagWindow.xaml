@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:RobloxShop.Forms.Windows.Update"
         mc:Ignorable="d"
             Title="UpdateTagWindow" Height="115" Width="271">
-    <Grid Margin="0,0,10,11">
+    <Grid>
         <Label Content="Название:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="29,24,0,0"/>
         <TextBox x:Name="tagNameTextBox" Margin="99,28,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Button Content="Обновить" HorizontalAlignment="Left" Margin="29,55,0,0" VerticalAlignment="Top" Height="21" Width="211" Click="Button_Click"/>

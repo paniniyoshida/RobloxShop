@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:RobloxShop.Forms.Windows"
         mc:Ignorable="d"
         Title="AddProductCartItemWindow" Height="132" Width="250">
-    <Grid Margin="0,0,10,10">
+    <Grid>
         <Label Content="Продукт" HorizontalAlignment="Left" Margin="44,10,0,0" VerticalAlignment="Top"/>
         <Label Content="Количество:" HorizontalAlignment="Left" Margin="23,27,0,0" VerticalAlignment="Top"/>
         <Button x:Name="addProductCartProviderButton" Content="Добавить" HorizontalAlignment="Left" Margin="23,84,0,0" VerticalAlignment="Top" Width="202" Height="22" Click="addProductCartButton_Click"/>

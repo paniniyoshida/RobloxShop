@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Metadata;
 using RobloxShop.Entities;
 using RobloxShop.Repository.Interfaces;
@@ -16,7 +17,11 @@ namespace RobloxShop.Repository
         {
             using ShopContext shopContext = new ShopContext();
 
+            entity.Date = entity.Date.ToUniversalTime();
+
             EntityEntry<Check> addedEntity = shopContext.Checks.Add(entity);
+
+            
 
             shopContext.SaveChanges();
 
@@ -40,13 +45,13 @@ namespace RobloxShop.Repository
         public Check Get(int id)
         {
             using ShopContext shopContext = new ShopContext();
-            return shopContext.Checks.FirstOrDefault(c => c.Id == id);
+            return shopContext.Checks.Include(x => x.User).Include(x => x.CheckPositions).Include(x => x.Promocode).FirstOrDefault(c => c.Id == id);
         }
 
         public List<Check> GetAll()
         {
             using ShopContext shopContext = new ShopContext();
-            return shopContext.Checks.ToList();
+            return shopContext.Checks.Include(x => x.User).Include(x => x.CheckPositions).Include(x => x.Promocode).ToList();
         }
 
         public Check Update(Check entity)

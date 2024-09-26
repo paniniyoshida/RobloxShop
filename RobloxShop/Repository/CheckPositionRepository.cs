@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using RobloxShop.Entities;
 using RobloxShop.Repository.Interfaces;
 using System;
@@ -39,13 +40,13 @@ namespace RobloxShop.Repository
         public CheckPosition Get(int id)
         {
             using ShopContext shopContext = new ShopContext();
-            return shopContext.CheckPositions.FirstOrDefault(c => c.Id == id);
+            return shopContext.CheckPositions.Include(x => x.Product).Include(x => x.Check).FirstOrDefault(c => c.Id == id);
         }
 
         public List<CheckPosition> GetAll()
         {
             using ShopContext shopContext = new ShopContext();
-            return shopContext.CheckPositions.ToList();
+            return shopContext.CheckPositions.Include(x => x.Product).Include(x => x.Check).ToList();
         }
 
         public CheckPosition Update(CheckPosition entity)

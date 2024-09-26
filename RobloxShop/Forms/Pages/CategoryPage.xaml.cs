@@ -30,6 +30,8 @@ namespace RobloxShop.Forms.Pages
         {
             InitializeComponent();
             _categoryService = DependencyResolver.GetService<ICategoryService>();
+            Reload();
+
         }
 
         private void add_button_Click(object sender, RoutedEventArgs e)

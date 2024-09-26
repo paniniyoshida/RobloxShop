@@ -31,6 +31,8 @@ namespace RobloxShop.Forms.Windows.Update
 
         private int _productId;
 
+        private readonly Dictionary<int, int> _userComboBoxMap = new Dictionary<int, int>();
+
         public UpdateProductCartWindow(int productId)
         {
             _productId = productId;
@@ -44,12 +46,16 @@ namespace RobloxShop.Forms.Windows.Update
 
             List<User> users = _userService.GetAll();
 
+
+            int UserIndex = 0;
             foreach (User user in users)
             {
-                addUserComboBox.Items.Insert(user.Id, user.Name + "" + user.Surname);
+                _userComboBoxMap.Add(UserIndex, user.Id);
+                addUserComboBox.Items.Insert(UserIndex, user.Name + "" + user.Surname);
+                UserIndex++;
             }
 
-            addUserComboBox.SelectedIndex = productCart.UserId;
+            addUserComboBox.SelectedIndex = _userComboBoxMap.FirstOrDefault(x => x.Value == productCart.UserId).Key;
         }
 
         private void addProductCartButton_Click(object sender, RoutedEventArgs e)
@@ -63,7 +69,7 @@ namespace RobloxShop.Forms.Windows.Update
             ProductCart productCart = new ProductCart()
             {
                 Id = _productId,
-                UserId = addUserComboBox.SelectedIndex,
+                UserId = _userComboBoxMap[addUserComboBox.SelectedIndex],
             };
 
             _productCartService.Update(productCart);

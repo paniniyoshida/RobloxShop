@@ -26,6 +26,9 @@ namespace RobloxShop.Forms.Windows
 
         private readonly ICategoryService _categoryService;
 
+        private readonly Dictionary<int, int> _categoryComboBoxMap = new Dictionary<int, int>();
+
+
         public AddProductWindow()
         {
             InitializeComponent();
@@ -34,9 +37,12 @@ namespace RobloxShop.Forms.Windows
 
             List<Category> categories = _categoryService.GetAll();
 
-            foreach (Category category in categories) 
+            int CategoryIndex = 0;
+            foreach (Category category in categories)
             {
-                categoryComboBox.Items.Insert(category.Id, category.Name);
+                _categoryComboBoxMap.Add(CategoryIndex, category.Id);
+                categoryComboBox.Items.Insert(CategoryIndex, category.Name);
+                CategoryIndex++;
             }
 
 
@@ -49,11 +55,13 @@ namespace RobloxShop.Forms.Windows
                 Name = productNameTextBox.Text,
                 Price = decimal.Parse(productPriceTextBox.Text),
                 Description = productDescriprionTextBox.Text,
-                CategoryID = categoryComboBox.SelectedIndex
+                CategoryID = _categoryComboBoxMap[categoryComboBox.SelectedIndex]
 
             };
 
             _productService.Add(product);
+            Close();
+
         }
     }
 }

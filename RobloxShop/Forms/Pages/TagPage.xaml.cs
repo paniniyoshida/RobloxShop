@@ -1,9 +1,13 @@
-﻿using RobloxShop.Forms.Windows;
+﻿using Newtonsoft.Json;
+using RobloxShop.Entities;
+using RobloxShop.Forms.Windows;
 using RobloxShop.Forms.Windows.Update;
+using RobloxShop.Services;
 using RobloxShop.Services.Interfaces;
 using RobloxShop.Utils;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +15,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -75,6 +80,63 @@ namespace RobloxShop.Forms.Pages
            // tagWindow.ShowDialog();
 
             Reload();
+        }
+
+        private void import_button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                if (openFileDialog.ShowDialog() == DialogResult.Cancel)
+                {
+                    return;
+                }
+
+
+                string fileName = openFileDialog.FileName;
+
+                string json = File.ReadAllText(fileName);
+
+                Tag tag = JsonConvert.DeserializeObject<Tag>(json);
+
+
+                _tagService.Add(tag);
+
+                Reload();
+            }
+
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Возникла ошибка");
+            }
+        }
+
+        private void export_button_Click(object sender, RoutedEventArgs e)
+        {
+            var viewdata = table_grid.SelectedItem as TagViewData;
+            if (viewdata != null)
+            {
+
+
+                Tag tag = _tagService.Get(viewdata.Id);
+
+                string json = JsonConvert.SerializeObject(tag);
+
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+                if (saveFileDialog.ShowDialog() == DialogResult.Cancel)
+                {
+                    return;
+                }
+
+
+
+                string fileName = saveFileDialog.FileName;
+
+                File.WriteAllText(fileName, json);
+
+            }
         }
     }
 }

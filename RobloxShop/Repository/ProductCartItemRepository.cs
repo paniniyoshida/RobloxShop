@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using RobloxShop.Entities;
 using RobloxShop.Repository.Interfaces;
 using System;
@@ -39,13 +40,13 @@ namespace RobloxShop.Repository
         public ProductCartItem Get(int id)
         {
             using ShopContext shopContext = new ShopContext();
-            return shopContext.ProductCartItems.FirstOrDefault(p => p.Id == id);
+            return shopContext.ProductCartItems.Include(x => x.Product).Include(x => x.ProductCart).FirstOrDefault(p => p.Id == id);
         }
 
         public List<ProductCartItem> GetAll()
         {
             using ShopContext shopContext = new ShopContext();
-            return shopContext.ProductCartItems.ToList();
+            return shopContext.ProductCartItems.Include(x => x.Product).Include(x => x.ProductCart).ToList();
         }
 
         public ProductCartItem Update(ProductCartItem entity)

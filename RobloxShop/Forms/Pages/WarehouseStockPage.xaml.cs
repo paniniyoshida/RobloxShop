@@ -34,6 +34,8 @@ namespace RobloxShop.Forms.Pages
             InitializeComponent();
 
             _warehouseStockService = DependencyResolver.GetService<IWarehouseStockService>();
+            Reload();
+
         }
 
         private void add_button_Click(object sender, RoutedEventArgs e)

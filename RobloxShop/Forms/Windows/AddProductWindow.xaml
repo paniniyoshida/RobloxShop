@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:RobloxShop.Forms.Windows"
         mc:Ignorable="d"
         Title="AddProductWindow" Height="284" Width="242">
-    <Grid Margin="0,0,21,26">
+    <Grid Margin="0,0,0,3">
         <Label Content="Название:" HorizontalAlignment="Left" Margin="29,27,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name ="productNameTextBox" HorizontalAlignment="Left" Margin="94,31,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Label Content="Цена:" HorizontalAlignment="Left" Margin="53,53,0,0" VerticalAlignment="Top"/>

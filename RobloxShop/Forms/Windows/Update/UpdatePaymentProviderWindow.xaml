@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:RobloxShop.Forms.Windows.Update"
         mc:Ignorable="d"
             Title="UpdatePaymentProviderWindow" Height="88" Width="283">
-    <Grid Margin="0,0,10,9">
+    <Grid Margin="0,0,0,1">
         <Label  Content="Название провайдера:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
 
         <TextBox x:Name="addProviderName" HorizontalAlignment="Left" Margin="150,15,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Height="15"  RenderTransformOrigin="0.367,-0.198"/>

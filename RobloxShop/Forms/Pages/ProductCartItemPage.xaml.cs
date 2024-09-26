@@ -33,6 +33,8 @@ namespace RobloxShop.Forms.Pages
             InitializeComponent();
 
             _productCartItemService = DependencyResolver.GetService<IProductCartItemService>();
+            Reload();
+
         }
 
         private void add_button_Click(object sender, RoutedEventArgs e)
