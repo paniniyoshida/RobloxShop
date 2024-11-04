@@ -71,7 +71,18 @@ namespace RobloxShop.Forms.Windows.Update
 
         private void addCheckButton_Click(object sender, RoutedEventArgs e)
         {
-           
+            if (addPromocodeComboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Не выбран промокод!");
+                return;
+            }
+
+            if (addUserComboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Не выбран пользователь!");
+                return;
+            }
+
             Check check = new Check()
             {
                 Id = _checkId,

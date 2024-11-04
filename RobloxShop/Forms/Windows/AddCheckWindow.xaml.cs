@@ -1,8 +1,10 @@
-﻿using RobloxShop.Entities;
+﻿using Microsoft.Data.SqlClient;
+using RobloxShop.Entities;
 using RobloxShop.Services.Interfaces;
 using RobloxShop.Utils;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -68,6 +70,21 @@ namespace RobloxShop.Forms.Windows
 
         private void addCheckButton_Click(object sender, RoutedEventArgs e)
         {
+
+            if (addPromocodeComboBox.SelectedIndex == -1)
+            {
+               MessageBox.Show("Не выбран промокод!");
+               return;
+            }
+
+            if (addUserComboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Не выбран пользователь!");
+                return;
+            }
+
+       
+
             Check check = new Check()
             {
                 UserID =_userComboBoxMap[addUserComboBox.SelectedIndex],

@@ -34,6 +34,24 @@ namespace RobloxShop.Forms.Windows
 
         private void addProductCartButton_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrEmpty(Name.Text))
+            {
+                MessageBox.Show("Не написано имя!");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(Code.Text))
+            {
+                MessageBox.Show("Не написан код!");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(Discount.Text))
+            {
+                MessageBox.Show("Не написана скидка!");
+                return;
+            }
+
             Promocode promocode = new Promocode()
             {
                 Name = Name.Text,

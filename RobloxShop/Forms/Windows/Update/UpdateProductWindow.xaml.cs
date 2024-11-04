@@ -63,6 +63,29 @@ namespace RobloxShop.Forms.Windows.Update
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (categoryComboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Не выбрана категория!");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(productNameTextBox.Text))
+            {
+                MessageBox.Show("Не написано название!");
+                return;
+            }
+
+            if (!decimal.TryParse(productPriceTextBox.Text, out decimal price))
+            {
+                MessageBox.Show("Не написана!");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(productDescriprionTextBox.Text))
+            {
+                MessageBox.Show("Не написано описание!");
+                return;
+            }
             Product product = new Product()
             {
                 Id = _productId,

@@ -42,6 +42,11 @@ namespace RobloxShop.Forms.Windows.Update
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrEmpty(tagNameTextBox.Text))
+            {
+                MessageBox.Show("Не написано название!");
+                return;
+            }
             Tag tag = new Tag()
             {
                 Id = _tagId,

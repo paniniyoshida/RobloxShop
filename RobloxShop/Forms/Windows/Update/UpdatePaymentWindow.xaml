@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:RobloxShop.Forms.Windows.Update"
         mc:Ignorable="d"
             Title="UpdatePaymentWindow" Height="119" Width="255">
-    <Grid>
+    <Grid Margin="0,0,-7,-6">
         <Label Content="Провайдер" HorizontalAlignment="Left" Margin="29,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.173,-2.234"/>
         <Label Content="ID чека" HorizontalAlignment="Left" Margin="51,29,0,0" VerticalAlignment="Top"/>
         <Button x:Name="addPaymentButton" Content="Обновить" HorizontalAlignment="Left" Margin="29,60,0,0" VerticalAlignment="Top" Width="197" Height="22" Click="addCheckButton_Click"/>

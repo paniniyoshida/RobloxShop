@@ -35,6 +35,12 @@ namespace RobloxShop.Forms.Windows
 
         private void addCheckButton_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrEmpty(addProviderName.Text))
+            {
+                MessageBox.Show("Не написано название провайдера!");
+                return;
+            }
+
             PaymentProvider paymentProvider = new PaymentProvider()
             {
                 Name = addProviderName.Text,

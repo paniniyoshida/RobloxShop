@@ -74,6 +74,23 @@ namespace RobloxShop.Forms.Windows.Update
 
         private void addProductCartButton_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrEmpty(addAmmountTextBox.Text))
+            {
+                MessageBox.Show("Не написан текст!");
+                return;
+            }
+
+            if (addCartComboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Не выбрана корзина!");
+                return;
+            }
+
+            if (addProductComboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Не выбран продукт!");
+                return;
+            }
             ProductCartItem productCartItem = new ProductCartItem()
             {
                 Id = _productCartItemId,

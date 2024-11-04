@@ -62,6 +62,18 @@ namespace RobloxShop.Forms.Windows
 
         private void addCheckButton_Click(object sender, RoutedEventArgs e)
         {
+            if (addCheckIdComboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Не выбран id!");
+                return;
+            }
+
+            if (addProviderComboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Не выбран провайдер!");
+                return;
+            }
+
             Payment payment = new Payment()
             {
                 CheckID = _checkComboBoxMap[addCheckIdComboBox.SelectedIndex],

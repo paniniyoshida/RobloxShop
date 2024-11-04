@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:RobloxShop.Forms.Windows.Update"
         mc:Ignorable="d"
             Title="UpdateUserWindow" Height="228" Width="242">
-    <Grid Margin="0,0,0,1">
+    <Grid Margin="0,0,-11,-16">
         <Label Content="Имя:" HorizontalAlignment="Left" Margin="69,6,0,0" VerticalAlignment="Top"/>
         <Label Content="Фамилия:" HorizontalAlignment="Left" Margin="43,28,0,0" VerticalAlignment="Top"/>
         <Label Content="Логин:" HorizontalAlignment="Left" Margin="59,51,0,0" VerticalAlignment="Top"/>

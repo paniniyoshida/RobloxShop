@@ -15,6 +15,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ConsolePasswordMasker;
+using ConsolePasswordMasker.Core;
 
 namespace RobloxShop.Forms.Windows
 {
@@ -31,8 +33,11 @@ namespace RobloxShop.Forms.Windows
             _userService = DependencyResolver.GetService<IUserService>();
         }
 
+        
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            
             string login = Login.Text;
             string password = Password.Text;
             User? user = _userService.GetByLoginAndPassword(login, password);

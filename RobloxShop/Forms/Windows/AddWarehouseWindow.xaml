@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:RobloxShop.Forms.Windows"
         mc:Ignorable="d"
         Title="AddWarehouseWindow" Height="101" Width="251">
-    <Grid>
+    <Grid Margin="0,0,-6,-6">
         <Label Content="Название склада:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="addWarehouseTB" HorizontalAlignment="Left" Margin="120,18,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Height="15"/>
         <Button x:Name="addProductCartProviderButton" Content="Добавить" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="230" Height="22" Click="addProductCartButton_Click"/>

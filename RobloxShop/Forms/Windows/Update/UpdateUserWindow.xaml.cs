@@ -57,6 +57,35 @@ namespace RobloxShop.Forms.Windows.Update
 
         private void addProductCartButton_Click(object sender, RoutedEventArgs e)
         {
+            if (RoleCB.SelectedItem == null)
+            {
+                MessageBox.Show("Не выбрана роль!");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(NameTB.Text))
+            {
+                MessageBox.Show("Не написано имя!");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(SurnameTB.Text))
+            {
+                MessageBox.Show("Не написана фамилия!");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(LoginTB.Text))
+            {
+                MessageBox.Show("Не написан логин!");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(PasswordTB.Text))
+            {
+                MessageBox.Show("Не написан пароль!");
+                return;
+            }
             User user = new User()
             {
                 Id = _userId,

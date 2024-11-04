@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:RobloxShop.Forms.Windows"
         mc:Ignorable="d"
         Title="AddTagWindow" Height="139" Width="251">
-    <Grid Margin="0,0,0,1">
+    <Grid Margin="0,0,-13,-12">
         <Label Content="Название:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="29,24,0,0"/>
         <TextBox x:Name="tagNameTextBox" Margin="99,28,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Button Content="Добавить" HorizontalAlignment="Left" Margin="29,55,0,0" VerticalAlignment="Top" Height="21" Width="190" Click="Button_Click"/>

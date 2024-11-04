@@ -56,6 +56,12 @@ namespace RobloxShop.Forms.Windows
 
         private void addProductCartButton_Click(object sender, RoutedEventArgs e)
         {
+            if (addUserComboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Не выбран покупатель!");
+                return;
+            }
+
             ProductCart productCart = new ProductCart()
             {
                 UserId = _userComboBoxMap[addUserComboBox.SelectedIndex]

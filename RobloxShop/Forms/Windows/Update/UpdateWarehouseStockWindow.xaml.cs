@@ -77,6 +77,23 @@ namespace RobloxShop.Forms.Windows.Update
 
         private void addProductCartButton_Click(object sender, RoutedEventArgs e)
         {
+            if (WarehouseCB.SelectedIndex == -1)
+            {
+                MessageBox.Show("Не выбран склад!");
+                return;
+            }
+
+            if (ProductCB.SelectedIndex == -1)
+            {
+                MessageBox.Show("Не выбран продукт!");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(ProductAmmountTB.Text))
+            {
+                MessageBox.Show("Не написано количество!");
+                return;
+            }
             WarehouseStock warehouseStock = new WarehouseStock()
             {
                 Id = _warehouseStockId,

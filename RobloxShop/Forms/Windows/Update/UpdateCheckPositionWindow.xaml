@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:RobloxShop.Forms.Windows.Update"
         mc:Ignorable="d"
                 Title="UpdateCheckPositionWindow" Height="147" Width="272">
-    <Grid>
+    <Grid Margin="0,0,-6,-6">
         <Label Content="Цена:" HorizontalAlignment="Left" Margin="101,1,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name ="productPriceTextBox" HorizontalAlignment="Left" Margin="142,5,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Label Content="Количество товаров:" HorizontalAlignment="Left" Margin="16,21,0,0" VerticalAlignment="Top" Height="30" Width="126"/>

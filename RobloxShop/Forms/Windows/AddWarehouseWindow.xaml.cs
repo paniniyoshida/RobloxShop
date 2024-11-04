@@ -32,6 +32,12 @@ namespace RobloxShop.Forms.Windows
 
         private void addProductCartButton_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrEmpty(addWarehouseTB.Text))
+            {
+                MessageBox.Show("Не написано название!");
+                return;
+            }
+
             Warehouse warehouse = new Warehouse()
             {
                 Name = addWarehouseTB.Text,

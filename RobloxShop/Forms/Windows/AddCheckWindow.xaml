@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:RobloxShop.Forms.Windows"
         mc:Ignorable="d"
         Title="AddCheckWindow" Height="248" Width="293">
-    <Grid Margin="0,0,0,2">
+    <Grid Margin="0,0,-16,-16">
         <ComboBox x:Name="addUserComboBox" HorizontalAlignment="Left" Margin="139,35,0,0" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="addPromocodeComboBox" HorizontalAlignment="Left" Margin="139,66,0,0" VerticalAlignment="Top" Width="120"/>
         <Label Content="Покупатель" HorizontalAlignment="Left" Margin="42,31,0,0" VerticalAlignment="Top"/>

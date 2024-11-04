@@ -41,6 +41,6 @@
             <Button x:Name="del_button" Grid.Column="1" Content="Удалить запись" Click="delete_button_Click"/>
             <Button x:Name="alter_button" Grid.Column="2" Content="Изменить запись" Click="update_button_Click"></Button>
         </Grid>
-        <Label Content="UserPage" HorizontalAlignment="Center"  VerticalAlignment="Top"/>
+        <Label Content="UserPage" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="455,0,0,0"/>
     </Grid>
 </Page>

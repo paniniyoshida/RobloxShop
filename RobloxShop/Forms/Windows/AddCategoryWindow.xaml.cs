@@ -34,6 +34,12 @@ namespace RobloxShop.Forms.Windows
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrEmpty(tagNameTextBox.Text))
+            {
+                MessageBox.Show("Не введено название!");
+                return;
+            }
+
             Category category = new Category()
             {
                 Name = tagNameTextBox.Text
