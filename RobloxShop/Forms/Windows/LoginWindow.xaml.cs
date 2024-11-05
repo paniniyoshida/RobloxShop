@@ -17,6 +17,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ConsolePasswordMasker;
 using ConsolePasswordMasker.Core;
+using System.Dynamic;
+using Microsoft.VisualBasic.Logging;
 
 namespace RobloxShop.Forms.Windows
 {
@@ -26,20 +28,44 @@ namespace RobloxShop.Forms.Windows
     public partial class LoginWindow : Window
     {
         private readonly IUserService _userService;
+
+        private const string _defaultUserLogin = "admin";
+        private const string _defaultUserPassword = "admin";
+
         public LoginWindow()
         {
             InitializeComponent();
 
             _userService = DependencyResolver.GetService<IUserService>();
+
+            CheckDefaultUser();
         }
 
-        
+        private void CheckDefaultUser()
+        {
+            User? user = _userService.GetByLoginAndPassword(_defaultUserLogin, _defaultUserPassword);
+
+            if (user is not null)
+                return;
+
+            user = new User()
+            {
+                Login = _defaultUserLogin,
+                PasswordHash = _defaultUserPassword,
+                Role = Entities.Enums.Role.Admin,
+                Surname = _defaultUserLogin,
+                Name = _defaultUserLogin,
+                Birthday = DateTime.UtcNow
+            };
+            
+            _userService.Add(user);
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             
             string login = Login.Text;
-            string password = Password.Text;
+            string password = Password.Password.ToString();
             User? user = _userService.GetByLoginAndPassword(login, password);
             if (user == null)
             {
@@ -55,7 +81,7 @@ namespace RobloxShop.Forms.Windows
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            AddUserWindow addUserWindow = new AddUserWindow();
+            AddUserWindow addUserWindow = new AddUserWindow(false);
             addUserWindow.ShowDialog();
             
 

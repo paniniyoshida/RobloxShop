@@ -62,7 +62,13 @@ namespace RobloxShop.Forms.Windows
         {
             if (string.IsNullOrEmpty(addAmmountTextBox.Text))
             {
-                MessageBox.Show("Не написан текст!");
+                MessageBox.Show("Не указано количество!");
+                return;
+            }
+
+            if (int.TryParse(addAmmountTextBox.Text, out int amount))
+            {
+                MessageBox.Show("Не указано количество!");
                 return;
             }
 
@@ -82,7 +88,7 @@ namespace RobloxShop.Forms.Windows
             {
                 ProductId = _productComboBoxMap[addProductComboBox.SelectedIndex],
                 ProductCartId = _cartItemComboBoxMap[addCartComboBox.SelectedIndex],
-                Amount = int.Parse(addAmmountTextBox.Text)
+                Amount = amount
             };
 
             _cartItemService.Add(productCartItem);

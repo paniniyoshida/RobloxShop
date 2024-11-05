@@ -55,9 +55,12 @@ namespace RobloxShop.Forms.Windows.Update
             int addUserComboBoxIndex = 0;
             foreach (User user in users)
             {
-                _userComboBoxMap.Add(addUserComboBoxIndex, user.Id);
-                addUserComboBox.Items.Insert(addUserComboBoxIndex, user.Name + " " + user.Surname);
-                addPromocodeComboBoxIndex++;
+                if (!_userComboBoxMap.TryGetValue(addUserComboBoxIndex, out _))
+                {
+                    _userComboBoxMap.Add(addUserComboBoxIndex, user.Id);
+                    addUserComboBox.Items.Insert(addUserComboBoxIndex, user.Name + " " + user.Surname);
+                    addPromocodeComboBoxIndex++;
+                }
             }
 
             Check check = _checkService.Get(checkId);

@@ -83,7 +83,7 @@ namespace RobloxShop.Forms.Windows
 
             WarehouseStock warehouseStock = new WarehouseStock()
             {
-                WarehouseID = _warehouseComboBoxMap[WarehouseCB.SelectedIndex],
+                WarehouseId = _warehouseComboBoxMap[WarehouseCB.SelectedIndex],
                 ProductId = _productComboBoxMap[ProductCB.SelectedIndex],
                 Amount = int.Parse(ProductAmmountTB.Text)
             };

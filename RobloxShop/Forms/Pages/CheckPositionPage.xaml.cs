@@ -58,6 +58,9 @@ namespace RobloxShop.Forms.Pages
         {
             var viewdata = table_grid.SelectedItem as CheckPositionViewData;
 
+            if (viewdata is null)
+                return;
+
             UpdateCheckPositionWindow positionWindow = new UpdateCheckPositionWindow(viewdata.Id);
 
             positionWindow.ShowDialog();

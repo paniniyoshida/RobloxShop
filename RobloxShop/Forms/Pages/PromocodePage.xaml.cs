@@ -57,6 +57,9 @@ namespace RobloxShop.Forms.Pages
         {
             var viewdata = table_grid.SelectedItem as PromocodeViewData;
 
+            if (viewdata is null)
+                return;
+
             UpdatePromocodeWindow promocodeWindow = new UpdatePromocodeWindow(viewdata.Id);
 
             promocodeWindow.ShowDialog();

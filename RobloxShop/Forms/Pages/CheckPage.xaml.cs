@@ -58,6 +58,9 @@ namespace RobloxShop.Forms.Pages
         {
             var viewdata = table_grid.SelectedItem as CheckViewData;
 
+            if (viewdata is null)
+                return;
+
             UpdateCheckWindow checkWindow = new UpdateCheckWindow(viewdata.Id);
 
             checkWindow.ShowDialog();

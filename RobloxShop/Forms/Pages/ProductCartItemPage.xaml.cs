@@ -58,6 +58,10 @@ namespace RobloxShop.Forms.Pages
         {
 
             var viewdata = table_grid.SelectedItem as ProductCartItemViewData;
+
+            if (viewdata is null)
+                return;
+
             UpdateProductCartItemWindow productCartItemWindow = new UpdateProductCartItemWindow(viewdata.Id);
             productCartItemWindow.ShowDialog();
             Reload();

@@ -59,12 +59,19 @@ namespace RobloxShop.Forms.Windows.Update
                 MessageBox.Show("Не написана скидка!");
                 return;
             }
+
+            if (!int.TryParse(Discount.Text,out int discount))
+            {
+                MessageBox.Show("Неверно указано значение скидки!");
+                return;
+            }
+
             Promocode promocode = new Promocode()
             {
                 Id = _promocodeId,
                 Name = Name.Text,
                 Code = Code.Text,
-                Discount = int.Parse(Discount.Text),
+                Discount = discount,
 
             };
             _promocodeService.Update(promocode);

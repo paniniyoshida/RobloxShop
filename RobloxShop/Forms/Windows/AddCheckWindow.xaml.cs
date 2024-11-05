@@ -31,7 +31,7 @@ namespace RobloxShop.Forms.Windows
 
         private readonly ICheckService _checkService;
 
-        private readonly Dictionary<int, int> _promocodeComboBoxMap = new Dictionary<int, int>();
+        private readonly Dictionary<int, int?> _promocodeComboBoxMap = new Dictionary<int, int?>();
         private readonly Dictionary<int, int> _userComboBoxMap = new Dictionary<int, int>();
 
 
@@ -49,8 +49,9 @@ namespace RobloxShop.Forms.Windows
             List<User> users = _userService.GetAll();
 
             addPromocodeComboBox.Items.Insert(0, "Пусто");
+            _promocodeComboBoxMap.Add(0, null);
 
-            int addPromocodeComboBoxIndex = 0;
+            int addPromocodeComboBoxIndex = 1;
             foreach (Promocode promocode in promocodes)
             {
                 _promocodeComboBoxMap.Add(addPromocodeComboBoxIndex, promocode.Id);
@@ -83,6 +84,11 @@ namespace RobloxShop.Forms.Windows
                 return;
             }
 
+            if (!addDateDatePicker.SelectedDate.HasValue)
+            {
+                MessageBox.Show("Не выбрана дата");
+                return;
+            }
        
 
             Check check = new Check()

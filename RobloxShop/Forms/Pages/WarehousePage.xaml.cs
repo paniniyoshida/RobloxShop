@@ -27,12 +27,14 @@ namespace RobloxShop.Forms.Pages
     public partial class WarehousePage : Page
     {
         private readonly IWarehouseService _warehouseService;
+        private readonly IWarehouseStockService _warehouseStockService;
 
         public WarehousePage()
         {
             InitializeComponent();
 
             _warehouseService = DependencyResolver.GetService<IWarehouseService>();
+            _warehouseStockService = DependencyResolver.GetService<IWarehouseStockService>();
             Reload();
         }
 
@@ -70,11 +72,12 @@ namespace RobloxShop.Forms.Pages
         
         void Reload()
         {
+            var stocks = _warehouseStockService.GetAll();
             table_grid.ItemsSource = _warehouseService.GetAll().Select(t => new WarehousePageViewData
             {
                 Id = t.Id,
                 Name = t.Name,
-                Stocks = t.Stocks.Sum(s => s.Amount)
+                Stocks = stocks.Where(s => s.WarehouseId == t.Id).Sum(s => s.Amount)
             });
         }
         private class WarehousePageViewData

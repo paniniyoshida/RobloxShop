@@ -19,7 +19,7 @@ namespace RobloxShop.Repository.EntitiesConfiguration
 
             builder.HasOne(p => p.Product).WithMany().HasForeignKey(p => p.ProductId);
 
-            builder.HasOne(p => p.Warehouse).WithMany().HasForeignKey(p => p.WarehouseID);
+            builder.HasOne(p => p.Warehouse).WithMany().HasForeignKey(p => p.WarehouseId);
         }
     }
 }

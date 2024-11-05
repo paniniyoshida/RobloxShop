@@ -58,6 +58,10 @@ namespace RobloxShop.Forms.Pages
         private void update_button_Click(object sender, RoutedEventArgs e)
         {
             var viewdata = table_grid.SelectedItem as UserViewData;
+
+            if (viewdata is null)
+                return;
+
             UpdateUserWindow userWindow = new UpdateUserWindow(viewdata.Id);
             userWindow.ShowDialog();
             Reload();

@@ -69,6 +69,12 @@ namespace RobloxShop.Forms.Windows
                 return;
             }
 
+            if (!int.TryParse(productAmmountTextBox.Text, out int amount))
+            {
+                MessageBox.Show("Неверно введено значение цены");
+                return;
+            }
+
             if (productComboBox.SelectedIndex == -1)
             {
                 MessageBox.Show("Не выбран продукт");
@@ -84,7 +90,7 @@ namespace RobloxShop.Forms.Windows
             CheckPosition checkPosition = new CheckPosition()
             {
                 Price = decimal.Parse(productPriceTextBox.Text),
-                Amount = int.Parse(productAmmountTextBox.Text),
+                Amount = amount,
                 ProductID =_productComboBoxMap[productComboBox.SelectedIndex],
                 CheckID =_checkComboBoxMap[checkComboBox.SelectedIndex],
             };

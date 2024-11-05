@@ -17,7 +17,7 @@ namespace RobloxShop.Entities
 
         public int Amount { get; set; }
 
-        public int WarehouseID { get; set; }
+        public int WarehouseId { get; set; }
 
         public Warehouse Warehouse { get; set; }
         

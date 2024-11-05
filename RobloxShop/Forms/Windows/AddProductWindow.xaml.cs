@@ -64,7 +64,7 @@ namespace RobloxShop.Forms.Windows
 
             if (!decimal.TryParse(productPriceTextBox.Text, out decimal price))
             {
-                MessageBox.Show("Не написана!");
+                MessageBox.Show("Неверно указана цена!");
                 return;
             }
 
@@ -77,7 +77,7 @@ namespace RobloxShop.Forms.Windows
             Product product = new Product()
             {
                 Name = productNameTextBox.Text,
-                Price = decimal.Parse(productPriceTextBox.Text),
+                Price = price,
                 Description = productDescriprionTextBox.Text,
                 CategoryID = _categoryComboBoxMap[categoryComboBox.SelectedIndex]
 

@@ -26,7 +26,7 @@ namespace RobloxShop.Forms.Windows
         private readonly IUserService _userService;
         
 
-        public AddUserWindow()
+        public AddUserWindow(bool allowChangeRole = true)
         {
             InitializeComponent();
 
@@ -35,6 +35,12 @@ namespace RobloxShop.Forms.Windows
 
             RoleCB.Items.Insert(0, "Пользователь");
             RoleCB.Items.Insert(1, "Администратор");
+
+            if (!allowChangeRole)
+            {
+                RoleCB.SelectedIndex = 0;
+                RoleCB.IsEnabled = false;
+            }
 
         }
 
@@ -68,6 +74,12 @@ namespace RobloxShop.Forms.Windows
             if (string.IsNullOrEmpty(PasswordTB.Text))
             {
                 MessageBox.Show("Не написан пароль!");
+                return;
+            }
+
+            if (!DateDP.SelectedDate.HasValue)
+            {
+                MessageBox.Show("Не выбрана дата дня рождения");
                 return;
             }
 

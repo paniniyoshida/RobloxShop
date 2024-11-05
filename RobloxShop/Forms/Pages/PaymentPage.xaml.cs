@@ -56,6 +56,10 @@ namespace RobloxShop.Forms.Pages
         private void update_button_Click(object sender, RoutedEventArgs e)
         {
             var viewdata = table_grid.SelectedItem as PaymentViewData;
+
+            if (viewdata is null)
+                return;
+
             UpdatePaymentWindow paymentWindow = new UpdatePaymentWindow(viewdata.Id);
             paymentWindow.ShowDialog();
             Reload();

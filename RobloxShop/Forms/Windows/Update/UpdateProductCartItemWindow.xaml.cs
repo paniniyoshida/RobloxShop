@@ -86,6 +86,12 @@ namespace RobloxShop.Forms.Windows.Update
                 return;
             }
 
+            if (int.TryParse(addAmmountTextBox.Text, out int amount))
+            {
+                MessageBox.Show("Не указано количество!");
+                return;
+            }
+
             if (addProductComboBox.SelectedIndex == -1)
             {
                 MessageBox.Show("Не выбран продукт!");
@@ -96,7 +102,7 @@ namespace RobloxShop.Forms.Windows.Update
                 Id = _productCartItemId,
                 ProductId = _productComboBoxMap[addProductComboBox.SelectedIndex],
                 ProductCartId = _cartItemComboBoxMap[addCartComboBox.SelectedIndex],
-                Amount = int.Parse(addAmmountTextBox.Text)
+                Amount = amount
             };
 
             _cartItemService.Update(productCartItem);

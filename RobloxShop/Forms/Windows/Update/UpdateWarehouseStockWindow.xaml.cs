@@ -71,7 +71,7 @@ namespace RobloxShop.Forms.Windows.Update
             }
 
             ProductCB.SelectedIndex = _productComboBoxMap.FirstOrDefault(x => x.Value == warehouseStock.ProductId).Key;
-            WarehouseCB.SelectedIndex = _warehouseComboBoxMap.FirstOrDefault(x => x.Value == warehouseStock.WarehouseID).Key;
+            WarehouseCB.SelectedIndex = _warehouseComboBoxMap.FirstOrDefault(x => x.Value == warehouseStock.WarehouseId).Key;
             ProductAmmountTB.Text = warehouseStock.Amount.ToString();
         }
 
@@ -89,6 +89,12 @@ namespace RobloxShop.Forms.Windows.Update
                 return;
             }
 
+            if(!int.TryParse(ProductAmmountTB.Text, out int amount))
+            {
+                MessageBox.Show("Неверноы указано количество!");
+                return;
+            }
+
             if (string.IsNullOrEmpty(ProductAmmountTB.Text))
             {
                 MessageBox.Show("Не написано количество!");
@@ -97,9 +103,9 @@ namespace RobloxShop.Forms.Windows.Update
             WarehouseStock warehouseStock = new WarehouseStock()
             {
                 Id = _warehouseStockId,
-                WarehouseID = _warehouseComboBoxMap[WarehouseCB.SelectedIndex],
+                WarehouseId = _warehouseComboBoxMap[WarehouseCB.SelectedIndex],
                 ProductId = _productComboBoxMap[ProductCB.SelectedIndex],
-                Amount = int.Parse(ProductAmmountTB.Text)
+                Amount = amount
             };
 
             _warehouseStockService.Update(warehouseStock);
