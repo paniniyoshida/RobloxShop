@@ -52,6 +52,12 @@ namespace RobloxShop.Forms.Windows
                 return;
             }
 
+            if(!int.TryParse(Discount.Text, out int discount))
+            {
+                MessageBox.Show("Неверно указана скидка!");
+                return;
+            }
+
             var promocodes = _promocodeService.GetAll();
 
             if(promocodes.Any(p=>p.Name == Name.Text))
@@ -64,7 +70,7 @@ namespace RobloxShop.Forms.Windows
             {
                 Name = Name.Text,
                 Code = Code.Text,
-                Discount = int.Parse(Discount.Text),
+                Discount = discount,
 
             };
             _promocodeService.Add(promocode);
