@@ -86,6 +86,18 @@ namespace RobloxShop.Forms.Windows.Update
                 return;
             }
 
+            if (!addDateDatePicker.SelectedDate.HasValue)
+            {
+                MessageBox.Show("Не выбрана дата");
+                return;
+            }
+
+            if (addDateDatePicker.SelectedDate.Value > DateTime.UtcNow)
+            {
+                MessageBox.Show("Дата не может быть больше текущей");
+                return;
+            }
+
             Check check = new Check()
             {
                 Id = _checkId,

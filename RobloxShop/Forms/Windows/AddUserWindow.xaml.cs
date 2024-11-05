@@ -83,6 +83,12 @@ namespace RobloxShop.Forms.Windows
                 return;
             }
 
+            if (DateDP.SelectedDate.Value > DateTime.UtcNow)
+            {
+                MessageBox.Show("Укажи верную дату дня рождения");
+                return;
+            }
+
             var users = _userService.GetAll();
 
             if(users.Any(u=>u.Login == LoginTB.Text))

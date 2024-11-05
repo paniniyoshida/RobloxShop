@@ -86,6 +86,19 @@ namespace RobloxShop.Forms.Windows.Update
                 MessageBox.Show("Не написан пароль!");
                 return;
             }
+
+            if (!DateDP.SelectedDate.HasValue)
+            {
+                MessageBox.Show("Не выбрана дата дня рождения");
+                return;
+            }
+
+            if (DateDP.SelectedDate.Value > DateTime.UtcNow)
+            {
+                MessageBox.Show("Укажи верную дату дня рождения");
+                return;
+            }
+
             User user = new User()
             {
                 Id = _userId,
