@@ -51,9 +51,6 @@ namespace RobloxShop.Forms.Windows
         }
 
 
-
-        
-
         private void addProductCartButton_Click(object sender, RoutedEventArgs e)
         {
             if (addUserComboBox.SelectedIndex == -1)

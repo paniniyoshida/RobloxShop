@@ -69,6 +69,10 @@ namespace RobloxShop.Forms.Pages
         private void update_button_Click(object sender, RoutedEventArgs e)
         {
             var viewdata = table_grid.SelectedItem as CategoryViewData;
+
+            if (viewdata is null)
+                return; 
+
             UpdateCategoryWindow categoryWindow = new UpdateCategoryWindow(viewdata.Id);
             categoryWindow.ShowDialog();
             Reload();

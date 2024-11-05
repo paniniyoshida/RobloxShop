@@ -36,6 +36,14 @@ namespace RobloxShop.Forms.Windows
                 return;
             }
 
+            var tags = _tagService.GetAll();
+
+            if(tags.Any(t=>t.Name == tagNameTextBox.Text))
+            {
+                MessageBox.Show("Тэг с таким именем уже сущестует");
+                return;
+            }
+
             Entities.Tag tag = new Entities.Tag()
             {
                 Name = tagNameTextBox.Text,

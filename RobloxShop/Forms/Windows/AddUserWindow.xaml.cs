@@ -83,6 +83,14 @@ namespace RobloxShop.Forms.Windows
                 return;
             }
 
+            var users = _userService.GetAll();
+
+            if(users.Any(u=>u.Login == LoginTB.Text))
+            {
+                MessageBox.Show("Логин занят");
+                return;
+            }
+
             User user = new User()
             {
                 Name = NameTB.Text,

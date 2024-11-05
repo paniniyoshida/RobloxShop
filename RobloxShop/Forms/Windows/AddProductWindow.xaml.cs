@@ -74,6 +74,14 @@ namespace RobloxShop.Forms.Windows
                 return;
             }
 
+            var products = _productService.GetAll();
+
+            if (products.Any(p => p.Name == productNameTextBox.Text))
+            {
+                MessageBox.Show("Продукт с таким названием уже существует");
+                return;
+            }
+
             Product product = new Product()
             {
                 Name = productNameTextBox.Text,

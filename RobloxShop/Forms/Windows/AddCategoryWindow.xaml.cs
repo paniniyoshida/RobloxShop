@@ -40,6 +40,13 @@ namespace RobloxShop.Forms.Windows
                 return;
             }
 
+            var categories = _categoryService.GetAll();
+            if (categories.Any(c => c.Name == tagNameTextBox.Text))
+            {
+                MessageBox.Show("Категория с таким именем уже существует");
+                return;
+            }
+
             Category category = new Category()
             {
                 Name = tagNameTextBox.Text

@@ -41,6 +41,14 @@ namespace RobloxShop.Forms.Windows
                 return;
             }
 
+            var providers = _paymentProviderService.GetAll();
+
+            if (providers.Any(p => p.Name == addProviderName.Text))
+            {
+                MessageBox.Show("Провайдер с таким именем уже существует");
+                return;
+            }
+
             PaymentProvider paymentProvider = new PaymentProvider()
             {
                 Name = addProviderName.Text,

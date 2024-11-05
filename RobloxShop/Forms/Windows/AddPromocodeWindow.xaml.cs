@@ -52,6 +52,14 @@ namespace RobloxShop.Forms.Windows
                 return;
             }
 
+            var promocodes = _promocodeService.GetAll();
+
+            if(promocodes.Any(p=>p.Name == Name.Text))
+            {
+                MessageBox.Show("Промокод с таким именем уже существует");
+                return;
+            }
+
             Promocode promocode = new Promocode()
             {
                 Name = Name.Text,
