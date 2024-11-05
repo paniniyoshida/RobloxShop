@@ -68,7 +68,14 @@ namespace RobloxShop.Forms.Windows
 
             };
 
-            _productCartService.Add(productCart);
+            try
+            {
+                _productCartService.Add(productCart);
+            }
+            catch
+            {
+                MessageBox.Show("Возникла ошибка при добавлении продуктовой корзины");
+            }
 
             Close();
         }
